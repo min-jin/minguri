@@ -27,7 +27,7 @@ public class MainHomeController {
 		
 		ModelAndView mav=new ModelAndView();
 		
-		List<Recipe> list=recipeDao.recentRecipe(0);
+		List<Recipe> list = recipeDao.recentRecipe(0);
 		mav.addObject("list", list);
 		
 		mav.setViewName(getPage);
