@@ -141,11 +141,11 @@
 	}
 	
 	function goUpdate(num){
-		location.href = 'update.rec?recnum=' + num; //RecipeUpdateController get
+		location.href = 'update.rec?recnum = ' + num; //RecipeUpdateController get
 	}
 	
 	function goDelete(num){
-		location.href = 'delete.rec?recnum=' + num; //RecipeDeleteController get 
+		location.href = 'delete.rec?recnum =' + num; //RecipeDeleteController get 
 	}
 	
 </script>	
