@@ -1,6 +1,10 @@
 package recipe.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,20 +28,27 @@ public class MoreRecipeController {
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	@ResponseBody
-	public String moreRecipe(@RequestParam("count") int count) {
+	public void moreRecipe(@RequestParam("count") int count,HttpServletResponse response) {
 		System.out.println(count);
-		List<Recipe> list=recDao.recentRecipe(count);
+		int offset=(count-1)*3;
+		List<Recipe> list=recDao.recentRecipe(offset);
 		
 		String str="";
 		
-		ObjectMapper mapper=new ObjectMapper();
+		
 		try {
+			PrintWriter writer;
+			response.setContentType("text/html;charset=UTF-8");
+			writer=response.getWriter();
+			ObjectMapper mapper=new ObjectMapper();
 			str=mapper.writeValueAsString(list);
 			System.out.println(str);
+			writer.println(str);
 		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		return str;
 	} 
 }

@@ -17,7 +17,7 @@ import recipe.model.RecipeDao;
 public class MainHomeController {
 	private static final String command="/mainPage.rec";
 	private static final String	getPage="MainHome";
-	
+	 
 	@Autowired
 	private RecipeDao recDao;
 	
@@ -29,6 +29,7 @@ public class MainHomeController {
 		
 		List<Recipe> list=recDao.recentRecipe(0);
 		mav.addObject("list", list);
+		
 		
 		mav.setViewName(getPage);
 		

@@ -7,6 +7,6 @@
 		select * from recipe where psubject like #{keyword}
 	</select>
 	<select id="recentRecipe" resultType="MyRecipe">
-		select * from recipe order by inputdate desc
+		select * from recipe order by recnum desc
 	</select>
 </mapper>

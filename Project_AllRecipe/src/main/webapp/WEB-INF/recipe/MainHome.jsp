@@ -3,27 +3,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="../MainTop.jsp" %>
 <html>
+<% request.setCharacterEncoding("UTF-8"); %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>mainPage</title>
 
 <script type="text/javascript">
 	$(function(){
-		var count=0;
+		var count=1;
 		$("#mbtn").click(function(){
 			count++;
 			console.log(count);
 			$.ajax({
 				url : "/ex/moreRecipe.rec",
 				type : "POST",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		        cache : false,
 		        data : "count="+count,
 		        success : function(data){
+		        	var Rdata = JSON.parse(data);
+		        	var text="";
+		        	for(var i=0;i<Rdata.length;i++){
+		        		text+='<div class="col-lg-4 col-sm-6 portfolio-item">';
+		        		text+='<div class="card h-100">';
+		        		text+='<a href="#"><img class="card-img-top" src="resources/img/'+Rdata[i].mainimage+'" alt=""></a>';
+		        		text+='<div class="card-body">';
+		        		text+='<h4 class="card-title">';
+		        		text+='<a href="#">'+Rdata[i].psubject+'</a></h4>';
+		        		text+='<p class="card-text">'+Rdata[i].intro+'</p>';
+		        		text+='</div></div></div>';
+		        	} 
 		        	
-		       		console.log(data);
+		        	$("#moreRecipe").append(text);
+		        	console.log(Rdata);
 
 		        }
-				
 			});
 		});
 	});	

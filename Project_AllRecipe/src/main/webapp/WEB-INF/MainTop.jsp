@@ -17,9 +17,56 @@
 
     <!-- Custom styles for this template -->
     <link href="resources/css/modern-business.css" rel="stylesheet">
+	<link href="resources/vendor/bootstrap/css1/creative.css" rel="stylesheet">
+   
+    <link href="resources/vendor/bootstrap/css1/createive.min.css" rel="stylesheet">
     <script src="resources/js/jquery.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+a {
+   color: black;
+   font-size: 16px;
+   font-weight: bold;
+   font-family: "Trebuchet MS", Dotum, Arial;
+}
+</style>
 
+
+
+<style>
+#topMenu {
+   height: 50px;
+   background-color: #FFC0CB;
+   
+
+}
+
+#topMenu ul li {
+   list-style: none;
+   color: black;
+   background-color: #FFC0CB;
+   float: left;
+   line-height: 50px;
+   vertical-align: middle;
+   text-align: center;
+}
+
+#topMenu .menuLink {
+   text-decoration: none;
+   color: black;
+   display: block;
+
+   width: 270px;
+   font-size: 18px;
+   font-weight: bold;
+   font-family: "Trebuchet MS", Dotum, Arial;
+}
+
+#topMenu .menuLink:hover {
+   color: #FF1493;
+   
+}
+</style>
 </head>
 <body>
   <!-- Navigation -->
@@ -63,6 +110,25 @@
         </div>
       </div>
     </nav>
+    <div class="container" align="center">
+
+      <a href="mainPage.rec"> <img src="resources/bg.jpg" width="40%"
+         alt="올레시피" />
+      </a>
+
+   </div>
+   <nav id="topMenu" >
+<div align="center" >
+   <ul>
+      <li><a class="menuLink" href="#">레시피</a></li>
+      <li><a class="menuLink" href="/talk/list.bod">토크</a></li>
+      <li><a class="menuLink" href="">요리정보</a></li>
+      <li><a class="menuLink" href="">시장보기</a></li>
+      <li><a class="menuLink" href="#">내가쉐프</a></li>
+      <li><a class="menuLink" href="#">올맛집</a></li>
+   </ul>
+   </div>
+   </nav>
 mainTop<br>
 session.loginInfo=${loginInfo.id }
 </body>

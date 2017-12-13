@@ -146,7 +146,7 @@ function writecheck(){
 		$("input[name=email1]").focus();
 		return false;
 	}
-	var email1regex=/^[a-zA-Z0-9]{3,15}$/;
+	var email1regex=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])$/;
 	if($("input[name=email1]").val().search(email1regex)<0){
 		alert("email주소는 3~15자의 영문자와 숫자로 입력해주세요.");
 		$("input[name=email1]").focus();
