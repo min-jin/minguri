@@ -3,10 +3,46 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="recipe.model.Recipe" >
+	
+	<select id="GetTotalCount" resultType="int">
+		select count(*) from recipe
+	</select>
+	
+	<select id="GetDataList" resultType="MyRecipe">
+		select * from recipe		
+		order by recnum desc
+	</select>
+	
+	<select id="GetData" resultType="MyRecipe">
+		select * from recipe
+		where recnum = #{recnum}
+	</select> 
+	
+	<insert id="InsertData">
+		INSERT INTO recipe (recnum, writer, psubject, intro, mainimage, kind, 
+		situation, method, ingredient, person, time, movieurl, scrap, image1, image2, image3, image4, inputdate)
+		VALUES (recnum.nextval, #{writer}, #{psubject}, #{intro}, #{mainimage}, #{kind}, 
+		#{situation}, #{method}, #{ingredient}, #{person}, #{time}, #{movieurl}, 0, #{image1}, #{image2}, #{image3}, #{image4}, sysdate);
+	</insert>
+	
+	<update id="UpdateData">
+		update recipe set psubject = #{psubject}, intro = #{intro}, mainimage = #{mainimage}, kind = #{kind}, situation = #{situation},
+		method = #{method}, ingredient = #{ingredient}, person = #{person}, time = #{time}, movieurl = #{movieurl}, image1 = {image1},
+		image2 = #{image2}, image3 = #{image3}, image4 = #{image4}, inputdate = sysdate
+		where recnum = #{recnum}
+	</update>
+	
+	<delete id="DeleteData">
+		delete from recipe
+		where recnum = #{recnum}
+	</delete>
+	
 	<select id="searchRecipe" resultType="MyRecipe">
 		select * from recipe where psubject like #{keyword}
 	</select>
+	
 	<select id="recentRecipe" resultType="MyRecipe">
-		select * from recipe order by inputdate desc
+		select * from recipe order by recnum desc
 	</select>
+	
 </mapper>
