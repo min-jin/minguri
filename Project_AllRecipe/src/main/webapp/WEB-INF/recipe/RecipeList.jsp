@@ -151,7 +151,7 @@
 </script>	
 </body>
 <%@include file="../MainBottom.jsp" %>
-
+   
 </html>
 
 <!-- 이밥차는 테이블 안 만들고 div - ul - li 로 화면 구분
