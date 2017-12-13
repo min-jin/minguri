@@ -45,6 +45,9 @@ create table recipe(
 	inputdate	date default sysdate
 );
 
+
+insert into recipe(recnum,writer,psubject,intro,mainimage) values(recipereq.nextval,'admin','제목입니다','소개글입니다','코알라.jpg'); 
+
 create sequence ingredientreq start with 1 increment by 1 nocache ;
 
 drop table ingredient cascade constraints;
