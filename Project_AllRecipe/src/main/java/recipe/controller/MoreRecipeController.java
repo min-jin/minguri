@@ -20,13 +20,13 @@ public class MoreRecipeController {
 	private static final String command="/moreRecipe.rec";
 	
 	@Autowired
-	private RecipeDao recDao;
+	private RecipeDao recipeDao;
 	
 	@RequestMapping(value=command,method=RequestMethod.POST)
 	@ResponseBody
 	public String moreRecipe(@RequestParam("count") int count) {
 		System.out.println(count);
-		List<Recipe> list=recDao.recentRecipe(count);
+		List<Recipe> list = recipeDao.recentRecipe(count);
 		
 		String str="";
 		
