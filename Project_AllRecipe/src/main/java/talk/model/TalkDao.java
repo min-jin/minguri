@@ -15,11 +15,11 @@ public class TalkDao {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 
-	public List<TalkContainer> TalkList(int offset) {
+	/*public List<TalkContainer> TalkList(int offset) {
 		List<TalkContainer> list=new ArrayList<TalkContainer>();
 		RowBounds rowBounds=new RowBounds(offset, 5);
 		list=sqlSessionTemplate.selectList(namespace+".TalkList", null, rowBounds);
 		return list;
-	}
+	}*/
 	
 }

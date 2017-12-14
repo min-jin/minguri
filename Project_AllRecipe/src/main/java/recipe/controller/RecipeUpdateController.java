@@ -37,7 +37,7 @@ public class RecipeUpdateController {
 	public String doActionGet(HttpSession session, @RequestParam(value = "recnum", required = true) int recnum, Model model) {
 		
 		//로그인 안한 사람이 수정하기 누르면 로그인 화면으로 이동
-		if(session.getAttribute("loginfo") == null) {
+		if(session.getAttribute("loginInfo") == null) {
 			
 			session.setAttribute("destination", "redirect:/update.rec?recnum="+recnum);
 			return "redirect:login.mem";
@@ -59,11 +59,11 @@ public class RecipeUpdateController {
 			//DEV : 이미지 파일 수정 및 수정 전 파일 지우기
 			// 기존의 사진을 MultipartFile 형식의 multi라는 곳에 담았다 
 			ArrayList<MultipartFile> multi = new ArrayList<MultipartFile>();
-			multi.add(recipe.getMainimage());
-			multi.add(recipe.getImage1());
-			multi.add(recipe.getImage2());
-			multi.add(recipe.getImage3());
-			multi.add(recipe.getImage4());
+			multi.add(recipe.getUploadmainimage());
+			multi.add(recipe.getUploadimage1());
+			multi.add(recipe.getUploadimage2());
+			multi.add(recipe.getUploadimage3());
+			multi.add(recipe.getUploadimage4());
 		
 			ModelAndView mav = new ModelAndView();
 			
@@ -102,7 +102,7 @@ public class RecipeUpdateController {
 					} catch(IOException e) {
 						e.printStackTrace();
 					}
-				}
+				}//for문의 끝
 				
 				mav.setViewName(gotoPage);// 기존 이미지 삭제하고 redirect:/list.rec 로 이동 
 				
@@ -114,6 +114,7 @@ public class RecipeUpdateController {
 			}//if~else
 			
 			return mav;
+			
 		
 	}
 

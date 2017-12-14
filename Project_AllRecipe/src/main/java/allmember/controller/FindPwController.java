@@ -41,13 +41,13 @@ public class FindPwController {
 			response.setContentType("text/html;charset=UTF-8");
 			writer=response.getWriter();
 	        if(bean!=null) {
-	            email.setContent("ºñ¹Ğ¹øÈ£´Â "+bean.getPassword()+" ÀÔ´Ï´Ù.");
+	            email.setContent("ë¹„ë°€ë²ˆí˜¸ëŠ” "+bean.getPassword()+" ì…ë‹ˆë‹¤.");
 	            email.setReceiver(bean.getEmail1()+"@"+bean.getEmail2());
-	            email.setSubject(bean.getId()+"´Ô ºñ¹Ğ¹øÈ£ Ã£±â ¸ŞÀÏÀÔ´Ï´Ù.");
+	            email.setSubject(bean.getId()+"ë‹˜ ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° ë©”ì¼ì…ë‹ˆë‹¤.");
 	            emailSender.SendEmail(email);
 	            
 	            writer.println("<script type='text/javascript'>");
-				writer.println("alert('È¸¿ø´ÔÀÇ ÆĞ½º¿öµå¸¦ °¡ÀÔµÈ emailÁÖ¼Ò·Î Àü¼ÛÇß½À´Ï´Ù.')");
+				writer.println("alert('íšŒì›ë‹˜ì˜ íŒ¨ìŠ¤ì›Œë“œë¥¼ ê°€ì…ëœ emailì£¼ì†Œë¡œ ì „ì†¡í–ˆìŠµë‹ˆë‹¤.')");
 				writer.println("location.href='login.mem'");
 				writer.println("</script>");
 				writer.flush();
@@ -55,7 +55,7 @@ public class FindPwController {
 	            return gotoPage;
 	        }else {
 	        	writer.println("<script type='text/javascript'>");
-				writer.println("alert('È¸¿øÁ¤º¸°¡ ¸ÂÁö¾Ê½À´Ï´Ù.')");
+				writer.println("alert('íšŒì›ì •ë³´ê°€ ë§ì§€ì•ŠìŠµë‹ˆë‹¤.')");
 				writer.println("history.back()");
 				writer.println("</script>");
 				writer.flush();

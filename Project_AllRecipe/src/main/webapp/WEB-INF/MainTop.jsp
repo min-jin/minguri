@@ -119,7 +119,7 @@ a {
    <nav id="topMenu" >
 <div align="center" >
    <ul>
-      <li><a class="menuLink" href="#">레시피</a></li>
+      <li><a class="menuLink" href="list.rec">레시피</a></li>
       <li><a class="menuLink" href="<%= contextPath %>/talk/list.bod">토크</a></li>
       <li><a class="menuLink" href="">요리정보</a></li>
       <li><a class="menuLink" href="">시장보기</a></li>

@@ -20,13 +20,13 @@
 	<table border="1">
 		<tr>
 			<td>
-				<img src="${mainImage }"/>
+				<img src="${recipe.mainImage }"/>
 			</td>
 			
 			<td align="center">
 				<table border="1">
 					<tr height="50">
-						<td width="120">요리명</td>
+						<td width="120">요리이름</td>
 						<td width="300"><c:out value="${recipe.psubject }"/></td>
 					</tr>
 					
@@ -47,10 +47,7 @@
 						<td width="300"><c:out value="${recipe.movieurl }"/></td>
 					</tr>
 					
-					<tr height="50">
-						<td width="120">재료</td>
-						<td width="300"><c:out value="${recipe.ingredient }"/></td>
-					</tr>
+					
 				</table>
 			</td>
 		</tr>

@@ -58,12 +58,14 @@
 		
 		<p>
 			<label for="ingredient">재료</label>
-			<input type="text" name="ingredient" id="ingredient" value="${recipe.ingredient }"/>
+			<textarea id="ingredient" name="ingredient" style="height:200px;width:380px;"
+			><c:out value="${recipe.ingredient}"/></textarea>
 		</p>
 		
 		<p>
 			<label for="intro">설명</label>
-			<input type="text" name="intro" id="intro" value="${recipe.intro }"/>
+			<textarea id="intro" name="intro" style="height:200px;width:380px;"
+			><c:out value="${recipe.intro}"/></textarea>
 		</p>	
 		
 		<p>

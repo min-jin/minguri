@@ -2,53 +2,113 @@ package recipe.model;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Recipe {
-	
-	private String recnum;		//�젅�떆�뵾 �꽆踰�
-	private String writer;		//�옉�꽦�옄
-	
-	@NotEmpty(message = "�젣紐� �엯�젰�빐�빞�빀�땲�떎")
-	private String psubject;	//�젣紐�
-	
-	@NotEmpty(message = "�냼媛쒓� �궓寃⑥빞 �빀�땲�떎")
-	private String intro;		//�꽕紐�
-	
-	private String mainimage;	// �씠誘몄�
-	private MultipartFile mainupload;	// �씠誘몄�
-	
-	@NotEmpty(message = "")
-	private int kind;		//醫낅쪟
-	
-	@NotEmpty(message = "")
-	private int situation;		//�긽�솴
-	
-	@NotEmpty(message = "")
-	private int method;		//諛⑸쾿
-	
-	@NotEmpty(message = "")
-	private int ingredient;	//�떇�옱猷�
-	
-	private String person;		//紐뉗씤遺�
-	private String time;		//�슂由ъ떆媛�
-	private String movieurl;	//�룞�쁺�긽 留곹겕 二쇱냼
-	private int scrap;		//�뒪�겕�옪�닔
-	private String image1;	//�씠誘몄�1
-	private String image2;	//�씠誘몄�2
-	private String image3;	//�씠誘몄�3
-	private String image4;	//�씠誘몄�4
-	
-	private MultipartFile upload1;	//�씠誘몄�1
-	private MultipartFile upload2;	//�씠誘몄�2
-	private MultipartFile upload3;	//�씠誘몄�3
-	private MultipartFile upload4;	//�씠誘몄�4
-	private Timestamp inputdate;	//�옉�꽦�씪
-	
+
 	public Recipe() {
 		
 	}
+	
+	private String recnum;		//레시피 넘버
+	private String writer;		//작성자
+	@NotEmpty(message = "요리 분류 해주세요")
+	private String theme;	//요리대분류
+	@NotEmpty(message = "요리 이름 써주세요")
+	private String psubject;	//요리이름
+	@NotEmpty(message = "짧은 소개글 남겨 주세요")
+	private String shortintro; //짧은 소개글
+	@NotEmpty(message = "요리 설명 해주세요")
+	private String intro;		//설명
+	
+	private String mainimage;	// 메인이미지
+	
+	private String ingredient;	//식재료
+	 	
+	private String movieurl;	//동영상 링크 주소
+	private int scrap;		//스크랩수
+	
+	private String image1;	//이미지1
+	private String image2;	//이미지2
+	private String image3;	//이미지3
+	private String image4;	//이미지4
+	
+	private Timestamp inputdate;	//작성일
+	
+	private MultipartFile uploadmainimage;
+	private MultipartFile uploadimage1;
+	private MultipartFile uploadimage2;
+	private MultipartFile uploadimage3;
+	private MultipartFile uploadimage4;
+	
+	public void setUploadmainimage(MultipartFile uploadmainimage){
+		
+		this.uploadmainimage = uploadmainimage;
+		
+		if(this.uploadmainimage != null){
+			this.mainimage = this.uploadmainimage.getOriginalFilename();
+		}
+	}
+	
+	public MultipartFile getUploadmainimage(){
+		return uploadmainimage;
+	}
+	
+	public void setUploadimage1(MultipartFile uploadimage1){
+		
+		this.uploadimage1 = uploadimage1;
+		
+		if(this.uploadimage1 != null ){
+			this.image1 = this.uploadimage1.getOriginalFilename();
+		}
+	}
+	
+	public MultipartFile getUploadimage1(){
+		return uploadimage1;
+	}
+	
+	public void setUploadimage2(MultipartFile uploadimage2){
+		
+		this.uploadimage2 = uploadimage2;
+		
+		if(this.uploadimage2 != null){
+			this.image2 = this.uploadimage2.getOriginalFilename();
+		}
+	}
+	
+	public MultipartFile getUploadimage2(){
+		return uploadimage2;
+	}
+	
+	public void setUploadimage3(MultipartFile uploadimage3){
+		
+		this.uploadimage3 = uploadimage3;
+		
+		if(this.uploadimage3 != null){
+			this.image3 = this.uploadimage3.getOriginalFilename();
+		}
+	}
+	
+	public MultipartFile getUploadimage3(){
+		return uploadimage3;
+	}
+	
+	public void setUploadimage4(MultipartFile uploadimage4){
+		
+		this.uploadimage4 = uploadimage4;
+		
+		if(this.uploadimage4 != null){
+			this.image4 = this.uploadimage4.getOriginalFilename();
+		}
+	}
+	
+	public MultipartFile getUploadimage4(){
+		return uploadimage4;
+	}
+	
 
 	public String getRecnum() {
 		return recnum;
@@ -73,7 +133,23 @@ public class Recipe {
 	public void setPsubject(String psubject) {
 		this.psubject = psubject;
 	}
-
+	
+	public void setTheme(String theme){
+		this.theme = theme;
+	}
+	
+	public String getTheme(){
+		return theme;
+	}
+	
+	public void setShortintro(String shortintro){
+		this.shortintro = shortintro;
+	}
+	
+	public String getShortintro(){
+		return shortintro;
+	}
+	
 	public String getIntro() {
 		return intro;
 	}
@@ -82,65 +158,20 @@ public class Recipe {
 		this.intro = intro;
 	}
 
-	public MultipartFile getMainupload() {
-		return mainupload;
+	public String getMainimage() {
+		return mainimage;
 	}
 
-	public void setMainupload(MultipartFile mainupload) {
-		this.mainupload = mainupload;
-		
-		if(this.mainupload != null) {// �씠誘몄� �뾽濡쒕뱶 �떎�뙣�떆
-			this.mainimage=mainupload.getOriginalFilename();
-		}
-		
+	public void setMainimage(String mainimage) {
+		this.mainimage = mainimage;
 	}
 
-	public int getKind() {
-		return kind;
-	}
-
-	public void setKind(int kind) {
-		this.kind = kind;
-	}
-
-	public int getSituation() {
-		return situation;
-	}
-
-	public void setSituation(int situation) {
-		this.situation = situation;
-	}
-
-	public int getMethod() {
-		return method;
-	}
-
-	public void setMethod(int method) {
-		this.method = method;
-	}
-
-	public int getIngredient() {
+	public String getIngredient() {
 		return ingredient;
 	}
 
-	public void setIngredient(int ingredient) {
+	public void setIngredient(String ingredient) {
 		this.ingredient = ingredient;
-	}
-
-	public String getPerson() {
-		return person;
-	}
-
-	public void setPerson(String person) {
-		this.person = person;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
 	}
 
 	public String getMovieurl() {
@@ -157,74 +188,6 @@ public class Recipe {
 
 	public void setScrap(int scrap) {
 		this.scrap = scrap;
-	}
-
-	public MultipartFile getUpload1() {
-		return mainupload;
-	}
-
-	public void setUpload1(MultipartFile upload1) {
-		this.upload1 = upload1;
-		
-		if(this.upload1 != null) {// �씠誘몄� �뾽濡쒕뱶 �떎�뙣�떆
-			this.image1=upload1.getOriginalFilename();
-		}
-		
-	}
-
-	public MultipartFile getUpload2() {
-		return mainupload;
-	}
-
-	public void setUpload2(MultipartFile upload2) {
-		this.upload2 = upload2;
-		
-		if(this.upload2 != null) {// �씠誘몄� �뾽濡쒕뱶 �떎�뙣�떆
-			this.image2=upload2.getOriginalFilename();
-		}
-		
-	}
-
-	public MultipartFile getUpload3() {
-		return mainupload;
-	}
-
-	public void setUpload3(MultipartFile upload3) {
-		this.upload3 = upload3;
-		
-		if(this.upload3 != null) {// �씠誘몄� �뾽濡쒕뱶 �떎�뙣�떆
-			this.image3=upload3.getOriginalFilename();
-		}
-		
-	}
-
-	public MultipartFile getUpload4() {
-		return mainupload;
-	}
-
-	public void setUpload4(MultipartFile upload4) {
-		this.upload4 = upload4;
-		
-		if(this.upload4 != null) {// �씠誘몄� �뾽濡쒕뱶 �떎�뙣�떆
-			this.image4=upload4.getOriginalFilename();
-		}
-		
-	}
-
-	public Timestamp getInputdate() {
-		return inputdate;
-	}
-
-	public void setInputdate(Timestamp inputdate) {
-		this.inputdate = inputdate;
-	}
-
-	public String getMainimage() {
-		return mainimage;
-	}
-
-	public void setMainimage(String mainimage) {
-		this.mainimage = mainimage;
 	}
 
 	public String getImage1() {
@@ -259,26 +222,31 @@ public class Recipe {
 		this.image4 = image4;
 	}
 
+	public Timestamp getInputdate() {
+		return inputdate;
+	}
+
+	public void setInputdate(Timestamp inputdate) {
+		this.inputdate = inputdate;
+	}
 	
+
 }
 /*create table recipe(
 		   recnum      number primary key,   
 		   writer      varchar2(30) references allmember(id) on delete set null,
-		   psubject   varchar2(60) default '�젣紐⑹뾾�쓬',
-		   intro      varchar2(2000),      --�냼媛�
-		   mainimage   varchar2(40),      --��臾몄씠誘몄�
-		   kind       number,            --醫낅쪟   
-		   situation   number,            --�긽�솴
-		   method      number,            --諛⑸쾿
-		   ingredient   number,            --�옱猷�
-		   person      varchar2(20),      --�씤�썝�닔
-		   time      varchar2(20),      --�슂由ъ떆媛�
-		   movieurl   varchar2(60),      --�룞�쁺�긽 留곹겕二쇱냼
-		   scrap      number default 0,   --�뒪�겕�옪�닔
-		   image1      varchar2(40),      -- �씠誘몄�1
-		   image2      varchar2(40),      -- �씠誘몄�2
-		   image3      varchar2(40),      -- �씠誘몄�3
-		   image4      varchar2(40),      -- �씠誘몄�4
-		   inputdate   date default sysdate -- �옉�꽦�씪
+		   theme	varchar2(30),		-- 테마
+		   psubject   varchar2(60) default '제목없음',
+		   shortintro varchar2(40),		-- 짧은 소개글
+		   intro      varchar2(2000),      --소개
+		   mainimage   varchar2(40),      --대문이미지
+		   ingredient   varchar2(1000),            --재료
+		   movieurl   varchar2(60),      --동영상 링크주소
+		   scrap      number default 0,   --스크랩수
+		   image1      varchar2(40),      -- 이미지1
+		   image2      varchar2(40),      -- 이미지2
+		   image3      varchar2(40),      -- 이미지3
+		   image4      varchar2(40),      -- 이미지4
+		   inputdate   date default sysdate -- 작성일
 		);
 */

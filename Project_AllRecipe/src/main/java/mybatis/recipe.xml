@@ -19,15 +19,14 @@
 	</select> 
 	
 	<insert id="InsertData">
-		INSERT INTO recipe (recnum, writer, psubject, intro, mainimage, kind, 
-		situation, method, ingredient, person, time, movieurl, scrap, image1, image2, image3, image4, inputdate)
-		VALUES (recnum.nextval, #{writer}, #{psubject}, #{intro}, #{mainimage}, #{kind}, 
-		#{situation}, #{method}, #{ingredient}, #{person}, #{time}, #{movieurl}, 0, #{image1}, #{image2}, #{image3}, #{image4}, sysdate);
+		INSERT INTO recipe (recnum, writer, psubject, theme, shortintro, intro, mainimage, ingredient, movieurl, scrap, image1, iamge2, image3, image4, inputdate)
+		VALUES (recipereq.nextval, #{writer}, #{psubject}, #{theme}, #{shortintro}, #{intro}, 
+		#{mainimage}, #{ingredient}, #{movieurl}, default, #{image1}, #{image2}, #{image3}, #{image4}, sysdate);
 	</insert>
 	
 	<update id="UpdateData">
-		update recipe set psubject = #{psubject}, intro = #{intro}, mainimage = #{mainimage}, kind = #{kind}, situation = #{situation},
-		method = #{method}, ingredient = #{ingredient}, person = #{person}, time = #{time}, movieurl = #{movieurl}, image1 = {image1},
+		update recipe set psubject = #{psubject}, theme=#{theme}, shortintro = #{shortintro}, intro = #{intro}, mainimage = #{mainimage}, 
+		ingredient = #{ingredient}, movieurl = #{movieurl}, image1 = {image1},
 		image2 = #{image2}, image3 = #{image3}, image4 = #{image4}, inputdate = sysdate
 		where recnum = #{recnum}
 	</update>
