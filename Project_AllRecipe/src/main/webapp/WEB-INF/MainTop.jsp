@@ -13,14 +13,14 @@
 <html>
 <head>
 <!-- Bootstrap core CSS -->
-    <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%= contextPath %>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="resources/css/modern-business.css" rel="stylesheet">
-	<link href="resources/vendor/bootstrap/css1/creative.css" rel="stylesheet">
+    <link href="<%= contextPath %>/resources/css/modern-business.css" rel="stylesheet">
+	<link href="<%= contextPath %>/resources/vendor/bootstrap/css1/creative.css" rel="stylesheet">
    
-    <link href="resources/vendor/bootstrap/css1/createive.min.css" rel="stylesheet">
-    <script src="resources/js/jquery.js" type="text/javascript"></script>
+    <link href="<%= contextPath %>/resources/vendor/bootstrap/css1/createive.min.css" rel="stylesheet">
+    <script src="<%= contextPath %>/resources/js/jquery.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 a {
@@ -29,11 +29,6 @@ a {
    font-weight: bold;
    font-family: "Trebuchet MS", Dotum, Arial;
 }
-</style>
-
-
-
-<style>
 #topMenu {
    height: 50px;
    background-color: #FFC0CB;
@@ -67,12 +62,16 @@ a {
    
 }
 </style>
+
+
+
+
 </head>
 <body>
   <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="mainPage.rec">All recipe</a>
+        <a class="navbar-brand" href="<%= contextPath %>/mainPage.rec">All recipe</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -80,15 +79,15 @@ a {
           <ul class="navbar-nav ml-auto">
           	<c:if test="${loginInfo==null }">
 	            <li class="nav-item">
-	              <a class="nav-link" href="login.mem">로그인</a>
+	              <a class="nav-link" href="<%= contextPath %>/login.mem">로그인</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="insert.mem">회원가입</a>
+	              <a class="nav-link" href="<%= contextPath %>/insert.mem">회원가입</a>
 	            </li>
             </c:if>
             <c:if test="${loginInfo!=null }">
 	            <li class="nav-item">
-	              <a class="nav-link" href="logout.jsp">로그아웃</a>
+	              <a class="nav-link" href="<%= contextPath %>/logout.jsp">로그아웃</a>
 	            </li>
 	            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,7 +111,7 @@ a {
     </nav>
     <div class="container" align="center">
 
-      <a href="mainPage.rec"> <img src="resources/bg.jpg" width="40%"
+      <a href="<%= contextPath %>/mainPage.rec"> <img src="<%= contextPath %>/resources/bg.jpg" width="40%"
          alt="올레시피" />
       </a>
 
@@ -121,7 +120,7 @@ a {
 <div align="center" >
    <ul>
       <li><a class="menuLink" href="#">레시피</a></li>
-      <li><a class="menuLink" href="/talk/list.bod">토크</a></li>
+      <li><a class="menuLink" href="<%= contextPath %>/talk/list.bod">토크</a></li>
       <li><a class="menuLink" href="">요리정보</a></li>
       <li><a class="menuLink" href="">시장보기</a></li>
       <li><a class="menuLink" href="#">내가쉐프</a></li>

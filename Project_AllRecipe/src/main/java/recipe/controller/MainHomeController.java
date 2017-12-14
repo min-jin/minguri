@@ -19,7 +19,7 @@ public class MainHomeController {
 	private static final String	getPage="MainHome";
 	 
 	@Autowired
-	private RecipeDao recDao;
+	private RecipeDao recipeDao;
 	
 	@RequestMapping(value=command,method=RequestMethod.GET)
 	public ModelAndView goMainHome(
@@ -27,7 +27,7 @@ public class MainHomeController {
 		
 		ModelAndView mav=new ModelAndView();
 		
-		List<Recipe> list=recDao.recentRecipe(0);
+		List<Recipe> list = recipeDao.recentRecipe(0);
 		mav.addObject("list", list);
 		
 		

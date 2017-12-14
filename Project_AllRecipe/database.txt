@@ -81,6 +81,7 @@ create table talk(
 	inputdate	date default sysdate
 );
 
+insert into talk values(talkseq.nextval,'admin','내용입니다.','Koala.jpg',sysdate);
 
 create sequence cookinfoseq start with 1 increment by 1 nocache ;
 

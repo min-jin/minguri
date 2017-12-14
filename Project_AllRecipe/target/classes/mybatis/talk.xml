@@ -4,6 +4,9 @@
  
 <mapper namespace="talk.model.Talk" >
 	<select id="TalkList" resultType="talk.model.TalkContainer">
-		select t.tnum,t.tid,t.tcontent,
+		select t.tnum,t.tid,t.tcontent,m.img,t.timage,t.inputdate,m.nickname 
+		from talk t join allmember m
+		on t.tid=m.id
+		order by t.tnum desc
 	</select>
 </mapper>

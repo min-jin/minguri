@@ -9,12 +9,70 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("MyRecipeDao")
+import utility.Paging;
+
+@Component("recipeDao")
 public class RecipeDao {
-	private static String namespace="recipe.model.Recipe";	
-	
+
+	private final String namespace = "recipe.model.Recipe";
+
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
+
+	public RecipeDao() {
+
+	}
+
+	//변수(recnum)로 총 갯수 파악해서 보내기
+	public int GetTotalCount(Map<String, String> map) {
+
+		int cnt = -1;
+		cnt = sqlSessionTemplate.selectOne(namespace+".GetTotalCount", map);
+		return cnt;
+
+	}
+
+	//레시피 리스트 작성해서 보내기
+	public List<Recipe> GetDataList(Paging pageInfo, Map<String, String> map) {
+
+		List<Recipe> lists = new ArrayList<Recipe>();
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		lists = sqlSessionTemplate.selectList(namespace+".GetDataList", map, rowBounds);
+
+		return lists;
+	}
+
+	//recnum을 통해서 데이터 담아 보내기
+	public Recipe GetData(int recnum) {
+
+		Recipe recipe = null;
+		recipe = sqlSessionTemplate.selectOne(namespace+".GetData", recnum);
+		return recipe;
+	}
+
+	//recnum을 통해서 데이터 지우기
+	public int DeleteData(int recnum) {
+
+		int cnt = -1;
+		cnt = sqlSessionTemplate.delete(namespace+".DeleteData", recnum);
+		return cnt;
+	}
+
+	//recipe내에 변수들 DB에 입력하기
+	public Integer InsertData(Recipe recipe) {
+
+		Integer cnt = -1;
+		cnt = sqlSessionTemplate.insert(namespace+".InsertData", recipe);
+		return cnt;
+	}
+
+	//recipe내에 변수들 DB수정
+	public Integer UpdateData(Recipe recipe) {
+
+		Integer cnt = -1;
+		cnt = sqlSessionTemplate.update(namespace, recipe);
+		return cnt;
+	}
 
 	public List<Recipe> searchRecipe(Map<String, String> map) {
 		List<Recipe> list=new ArrayList<Recipe>();
@@ -28,4 +86,6 @@ public class RecipeDao {
 		list=sqlSessionTemplate.selectList(namespace+".recentRecipe", null, rowBounds);
 		return list;
 	}
+
+
 }
