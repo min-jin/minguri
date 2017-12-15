@@ -22,6 +22,8 @@ li {
     float: left;
 }
 </style>
+
+
 <title>Insert title here</title>
 </head>
 <!-- 메인 이미지와 한 줄 설명, 이미지 클릭 시 상세보기 화면으로 이동,  테마보기 닫기로 카테고리 보이기 -->
@@ -113,20 +115,17 @@ li {
 <h2>레시피 홈 RecipeList.jsp</h2>
 	
 	<table>
-	<c:forEach items ="${recipeLists }"  var = "recipe">
-		
+	<c:forEach items ="${recipeLists }"  var ="recipe">
+	<c:set var="uploadmainimage" value="http://localhost:9090${pageContext.request.contextPath }/resources/recipe/${recipe.mainimage }"/>		
 		<tr>
 			<td>
-				<a href="detail.rec?recnum=<c:out value="${recipe.num }"/>">
-				<img src="<c:out value="${recipe.mainimage }"/>" alt="" / style="width:100%">
-				<p class="s_title">간단한 설명</p>
+				<a href="detail.rec?recnum=<c:out value="${recipe.recnum }"/>">
+				<img src="${uploadmainimage }"/>
+				<p class="s_title"><c:out value="${recipe.shortintro}"/></p>
 				<p class="b_title"><c:out value="${recipe.psubject }"/></p>
 				</a>
 			</td>
 		</tr>
-		
-		
-	
 	
 	</c:forEach>
 		<tr>
@@ -134,13 +133,6 @@ li {
 				<input type="button" value="추가" onclick="insert();"/>
 			</td>
 			
-			<td>
-				<input type="button" value="수정" value="${recipe.num }" onclick="goUpdate('${recipe.num}')"/>
-			</td>
-			
-			<td>
-				<input type="button" value="삭제" value="${recipe.num }" onclick="goDelete('${recipe.num}')"/>
-			</td>
 		</tr>
 		
 	</table>
@@ -150,19 +142,11 @@ li {
 		${pageInfo.pagingHtml }
 	</center>
 	
-<!-- 레시피 등록 , 수정, 삭제 -->
+<!-- 레시피 등록 , 수정과 삭제는 자세히 보기에서 -->
 <script type="text/javascript">
 	
 	function insert(){
 		location.href='insert.rec'; //get 방식
-	}
-	
-	function goUpdate(num){
-		location.href = 'update.rec?recnum = ' + num; //RecipeUpdateController get
-	}
-	
-	function goDelete(num){
-		location.href = 'delete.rec?recnum =' + num; //RecipeDeleteController get 
 	}
 	
 </script>

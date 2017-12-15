@@ -14,9 +14,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import allmember.model.AllMember;
 import recipe.model.Recipe;
 import recipe.model.RecipeDao;
 
@@ -56,7 +58,8 @@ public class RecipeInsertController {
 	
 	//데이터 db에 입력하고 페이지 이동
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	public ModelAndView doActionPost(@ModelAttribute("recipe") @Valid Recipe recipe, BindingResult bindingResult, HttpSession session) {
+	public ModelAndView doActionPost(@ModelAttribute("recipe") @Valid Recipe recipe, 
+			BindingResult bindingResult, HttpSession session) {
 		
 		System.out.println(this.getClass() + "POST방식 들어옴" );
 		
@@ -65,17 +68,20 @@ public class RecipeInsertController {
 		System.out.println("servletContext.getRealPath('/')" + servletContext.getRealPath("/"));
 		//C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Project_AllRecipe\
 		
-		String uploadPath = servletContext.getRealPath("/resources");
+		String uploadPath = servletContext.getRealPath("/resources/recipe");
 		System.out.println("uploadPath : " + uploadPath);
-		// C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Project_AllRecipe\resources
+		// C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Project_AllRecipe\resources\recipe
 		
-		//세션에서 id값 가져와서 작성자에 입력
-		System.out.println("loginInfo : " + session.getAttribute("loginInfo"));
-		String writer = (String) session.getAttribute("loginInfo");
-		System.out.println(writer);
-		recipe.setWriter(writer);
+		//세션에서 id값 가져와서 작성자에 입력 : 참조값으로 설정되어으므로 id값 사용
+		System.out.println("sessionloginInfo : " + session.getAttribute("loginInfo"));
+		System.out.println("session id : " + session.getAttribute("id"));
+		AllMember writer = new AllMember();
+		writer = (AllMember)session.getAttribute("loginInfo");
+		System.out.println("writer.getNickname() : "+writer.getId());
 		
-		//유효성 검사 항목 출력
+		recipe.setWriter(writer.getId());
+				
+		//유효성 검사 항목 출력 및 데이터가 제대로 있는지 확인
 		
 		System.out.println("recipe.getRecnum() : " + recipe.getRecnum());
 		System.out.println("recipe.getWriter() :" + recipe.getWriter() );
@@ -84,12 +90,12 @@ public class RecipeInsertController {
 		System.out.println("recipe.getShortintro() : " + recipe.getShortintro());
 		System.out.println("recipe.getIngredient() : " + recipe.getIngredient());
 		System.out.println("recipe.getMovieurl() : " + recipe.getMovieurl());
-		System.out.println("recipe.getIntro()" + recipe.getIntro());
-		System.out.println("recipe.getMainimage() " + recipe.getMainimage());
-		System.out.println("recipe.getImage1() " + recipe.getImage1());
-		System.out.println("recipe.getImage2() " + recipe.getImage2());
-		System.out.println("recipe.getImage3() " + recipe.getImage3());
-		System.out.println("recipe.getImage4() " + recipe.getImage4());
+		System.out.println("recipe.getIntro() : " + recipe.getIntro());
+		System.out.println("recipe.getMainimage() : " + recipe.getMainimage());
+		System.out.println("recipe.getImage1() : " + recipe.getImage1());
+		System.out.println("recipe.getImage2() : " + recipe.getImage2());
+		System.out.println("recipe.getImage3() : " + recipe.getImage3());
+		System.out.println("recipe.getImage4() : " + recipe.getImage4());
 		
 		if(bindingResult.hasErrors()) {
 			
@@ -120,7 +126,7 @@ public class RecipeInsertController {
 			for (int i = 0 ; i < multi.size() ; i++) {
 				
 				File destination = new File(uploadPath + File.separator + multi.get(i).getOriginalFilename());
-				// C:\Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\TeamProject\resources\사진이름.jpg
+				// C:\Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\TeamProject\resources\recipe\사진이름.jpg
 				
 				try {
 					multi.get(i).transferTo(destination);

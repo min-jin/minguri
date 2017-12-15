@@ -13,14 +13,18 @@ public class Recipe {
 		
 	}
 	
-	private String recnum;		//레시피 넘버
+	private int recnum;		//레시피 넘버
 	private String writer;		//작성자
+	
 	@NotEmpty(message = "요리 분류 해주세요")
 	private String theme;	//요리대분류
+	
 	@NotEmpty(message = "요리 이름 써주세요")
 	private String psubject;	//요리이름
+	
 	@NotEmpty(message = "짧은 소개글 남겨 주세요")
 	private String shortintro; //짧은 소개글
+	
 	@NotEmpty(message = "요리 설명 해주세요")
 	private String intro;		//설명
 	
@@ -110,11 +114,11 @@ public class Recipe {
 	}
 	
 
-	public String getRecnum() {
+	public int getRecnum() {
 		return recnum;
 	}
 
-	public void setRecnum(String recnum) {
+	public void setRecnum(int recnum) {
 		this.recnum = recnum;
 	}
 
