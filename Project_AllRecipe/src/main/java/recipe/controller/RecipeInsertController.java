@@ -68,9 +68,9 @@ public class RecipeInsertController {
 		System.out.println("servletContext.getRealPath('/')" + servletContext.getRealPath("/"));
 		//C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Project_AllRecipe\
 		
-		String uploadPath = servletContext.getRealPath("/resources/recipe");
+		String uploadPath = servletContext.getRealPath("/resources/recipe/");
 		System.out.println("uploadPath : " + uploadPath);
-		// C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Project_AllRecipe\resources\recipe
+		// C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Project_AllRecipe\resources\recipe\
 		
 		//세션에서 id값 가져와서 작성자에 입력 : 참조값으로 설정되어으므로 id값 사용
 		System.out.println("sessionloginInfo : " + session.getAttribute("loginInfo"));
@@ -126,7 +126,7 @@ public class RecipeInsertController {
 			for (int i = 0 ; i < multi.size() ; i++) {
 				
 				File destination = new File(uploadPath + File.separator + multi.get(i).getOriginalFilename());
-				// C:\Spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\TeamProject\resources\recipe\사진이름.jpg
+				// C:\project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Project_Allrecipe\resources\recipe\사진이름.jpg
 				
 				try {
 					multi.get(i).transferTo(destination);

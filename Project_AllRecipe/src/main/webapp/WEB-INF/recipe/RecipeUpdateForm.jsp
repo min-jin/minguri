@@ -28,7 +28,8 @@
 		
 		
 		<p><!-- 요리 분류의 value 값 숫자로   12.15 현재 술&칵테일만 선택됨 -->
-			<label for="theme">요리 분류</label>	
+			<label for="theme">요리 분류</label>
+				<input type="hidden" name="recnum" value="${recipe.recnum}">
 				<select name="theme" id="theme" >
 					<option value="" selected>선택</option>
 					<option value="1" <c:if test="${recipe.theme == 1 }"/> selected>밥요리</option>
@@ -39,9 +40,9 @@
 					<option value="6" <c:if test="${recipe.theme == 6 }"/> selected>튀김</option>
 					<option value="7" <c:if test="${recipe.theme == 7 }"/> selected>샐러드</option>
 					<option value="8" <c:if test="${recipe.theme == 8 }"/> selected>도시락</option>
-					<option value="9" <c:if test="${recipe.theme == 9 }"/> selected>찌개&전골</option>
+					<option value="9" <c:if test="${recipe.theme == 9 }"/> selected>찌개와전골</option>
 					<option value="10" <c:if test="${recipe.theme == 10 }"/> selected>술안주</option>
-					<option value="11" <c:if test="${recipe.theme == 11 }"/> selected>술&칵테일</option>
+					<option value="11" <c:if test="${recipe.theme == 11 }"/> selected>술과칵테일</option>
 				</select>
 			<form:errors cssClass = "err" path="theme"/>
 		</p>
