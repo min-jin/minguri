@@ -134,6 +134,8 @@ create table reply(
 	canum		number not null,
 	rewriter	varchar2(30) not null,
 	content		varchar2(2000),
+	renickname	varchar2(30) not null,
+	reimg		varchar2(30) not null,
 	ref 		number not null,	
 	restep 		number not null,
 	relevel 	number not null,

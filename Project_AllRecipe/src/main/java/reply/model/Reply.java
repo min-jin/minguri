@@ -1,6 +1,7 @@
 package reply.model;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class Reply {
 	private int renum;
@@ -8,21 +9,29 @@ public class Reply {
 	private int canum;
 	private String rewriter;
 	private String content;
+	private String renickname;
+	private String reimg;
 	private int ref;
 	private int restep;
 	private int relevel;
 	private Timestamp inputdate;
+	private String dateString;
+	
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	
 	public Reply() {
 		super();
 	}
-	public Reply(int renum, String cate, int canum, String rewriter, String content, int ref, int restep, int relevel,
-			Timestamp inputdate) {
+	public Reply(int renum, String cate, int canum, String rewriter, String content, String renickname, String reimg,
+			int ref, int restep, int relevel, Timestamp inputdate) {
 		super();
 		this.renum = renum;
 		this.cate = cate;
 		this.canum = canum;
 		this.rewriter = rewriter;
 		this.content = content;
+		this.renickname = renickname;
+		this.reimg = reimg;
 		this.ref = ref;
 		this.restep = restep;
 		this.relevel = relevel;
@@ -58,6 +67,18 @@ public class Reply {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public String getRenickname() {
+		return renickname;
+	}
+	public void setRenickname(String renickname) {
+		this.renickname = renickname;
+	}
+	public String getReimg() {
+		return reimg;
+	}
+	public void setReimg(String reimg) {
+		this.reimg = reimg;
+	}
 	public int getRef() {
 		return ref;
 	}
@@ -79,14 +100,24 @@ public class Reply {
 	public Timestamp getInputdate() {
 		return inputdate;
 	}
+	
+	public String getDateString() {
+		return dateString;
+	}
+	public void setDateString(String dateString) {
+		this.dateString = dateString;
+	}
 	public void setInputdate(Timestamp inputdate) {
 		this.inputdate = inputdate;
+		if(inputdate!=null) {
+			this.dateString=sdf.format(inputdate);
+		}
 	}
 	@Override
 	public String toString() {
 		return "Reply [renum=" + renum + ", cate=" + cate + ", canum=" + canum + ", rewriter=" + rewriter + ", content="
-				+ content + ", ref=" + ref + ", restep=" + restep + ", relevel=" + relevel + ", inputdate=" + inputdate
-				+ "]";
+				+ content + ", renickname=" + renickname + ", reimg=" + reimg + ", ref=" + ref + ", restep=" + restep
+				+ ", relevel=" + relevel + ", inputdate=" + inputdate + "]";
 	}
 	
 	

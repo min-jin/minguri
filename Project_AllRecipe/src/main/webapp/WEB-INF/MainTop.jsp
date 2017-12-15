@@ -17,9 +17,7 @@
 
     <!-- Custom styles for this template -->
     <link href="<%= contextPath %>/resources/css/modern-business.css" rel="stylesheet">
-	<link href="<%= contextPath %>/resources/vendor/bootstrap/css1/creative.css" rel="stylesheet">
    
-    <link href="<%= contextPath %>/resources/vendor/bootstrap/css1/createive.min.css" rel="stylesheet">
     <script src="<%= contextPath %>/resources/js/jquery.js" type="text/javascript"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
@@ -111,7 +109,7 @@ a {
     </nav>
     <div class="container" align="center">
 
-      <a href="<%= contextPath %>/mainPage.rec"> <img src="<%= contextPath %>/resources/bg.jpg" width="40%"
+      <a href="<%= contextPath %>/mainPage.rec"> <img src="" width="40%"
          alt="올레시피" />
       </a>
 

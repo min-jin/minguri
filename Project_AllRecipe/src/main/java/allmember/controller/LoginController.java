@@ -52,13 +52,14 @@ public class LoginController {
 		
 		
 		AllMember member=adao.LoginSelect(map);
+		
 		PrintWriter writer;
 		response.setContentType("text/html;charset=UTF-8");
 		writer=response.getWriter();
 		
 		if(member==null) {
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('µî·ÏµÈ ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.')");
+			writer.println("alert('ë“±ë¡ëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤ .')");
 			writer.println("history.back()");
 			writer.println("</script>");
 			writer.flush();
@@ -68,7 +69,7 @@ public class LoginController {
 			if(member.getId().equals(id) && member.getPassword().equals(password)) {
 				session.setAttribute("loginInfo", member);
 				writer.println("<script type='text/javascript'>");
-				writer.println("alert('"+id+"´Ô ¾î¼­¿À¼¼¿ä.')");
+				writer.println("alert('"+id+"ë‹˜ ì–´ì„œì˜¤ì„¸ìš”.')");
 				writer.println("location.href='mainPage.rec'");
 				writer.println("</script>");
 				writer.flush();
@@ -77,7 +78,7 @@ public class LoginController {
 				return gotoPage;
 			}else {
 				writer.println("<script type='text/javascript'>");
-				writer.println("alert('ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.')");
+				writer.println("alert('ï¿½ï¿½Ğ¹ï¿½È£ï¿½ï¿½ ï¿½Ù½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.')");
 				writer.println("history.back()");
 				writer.println("</script>");
 				writer.flush();

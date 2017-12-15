@@ -9,4 +9,10 @@
 		on t.tid=m.id
 		order by t.tnum desc
 	</select>
+	<select id="containerByTid" resultType="talk.model.TalkContainer">
+		select t.tnum,t.tid,t.tcontent,m.img,t.timage,t.inputdate,m.nickname 
+		from talk t join allmember m
+		on t.tid=m.id and tnum=#{tnum}
+		order by t.tnum desc
+	</select>
 </mapper>

@@ -3,5 +3,14 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="reply.model.Reply" >
-
+	<insert id="InsertReply">
+		insert into reply values(replyreq.nextval,#{cate},#{canum},#{rewriter},#{content},#{renickname},#{reimg},
+		replyreq.currval,0,0,sysdate)
+	</insert>
+	<select id="selectAllReply" resultType="MyReply">
+		select * from reply where cate=#{cate} and canum=#{canum} order by renum desc
+	</select>
+	<delete id="replyDelete">
+		delete from reply where renum=#{renum}
+	</delete>
 </mapper>

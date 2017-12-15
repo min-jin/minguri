@@ -21,5 +21,11 @@ public class TalkDao {
 		list=sqlSessionTemplate.selectList(namespace+".TalkList", null, rowBounds);
 		return list;
 	}
+
+	public TalkContainer containerByTid(int tnum) {
+		TalkContainer talkContainer=null;
+		talkContainer=sqlSessionTemplate.selectOne(namespace+".containerByTid", tnum);
+		return talkContainer;
+	}
 	
 }
