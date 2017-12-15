@@ -52,14 +52,13 @@ public class LoginController {
 		
 		
 		AllMember member=adao.LoginSelect(map);
-		
 		PrintWriter writer;
 		response.setContentType("text/html;charset=UTF-8");
 		writer=response.getWriter();
 		
 		if(member==null) {
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('등록된 아이디가 없습니다 .')");
+			writer.println("alert('등록된 아이디가 없습니다.')");
 			writer.println("history.back()");
 			writer.println("</script>");
 			writer.flush();
@@ -78,7 +77,7 @@ public class LoginController {
 				return gotoPage;
 			}else {
 				writer.println("<script type='text/javascript'>");
-				writer.println("alert('��й�ȣ�� �ٽ� Ȯ�����ּ���.')");
+				writer.println("alert('비밀번호를 다시 확인해주세요.')");
 				writer.println("history.back()");
 				writer.println("</script>");
 				writer.flush();

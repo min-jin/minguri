@@ -70,7 +70,7 @@ public class RecipeDao {
 	public Integer UpdateData(Recipe recipe) {
 
 		Integer cnt = -1;
-		cnt = sqlSessionTemplate.update(namespace, recipe);
+		cnt = sqlSessionTemplate.update(namespace+".UpdateData", recipe);
 		return cnt;
 	}
 

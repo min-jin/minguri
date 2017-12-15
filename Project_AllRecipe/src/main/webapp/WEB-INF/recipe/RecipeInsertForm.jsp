@@ -17,7 +17,7 @@
 <body>
 
 레시피 추가화면
-<div>
+<div align="center">
 	<form:form commandName="recipe" method="post" action="insert.rec" enctype="multipart/form-data">
 		
 		
@@ -37,7 +37,7 @@
 					<option value="10">술안주</option>
 					<option value="11">술&칵테일</option>
 				</select>
-			<form:errors cssClass = "err" path="theme"/>
+			<form:errors cssClass ="err" path="theme"/>
 		</p>
 		
 		<p>
@@ -49,21 +49,24 @@
 		<p>
 			<label for="shortintro">간단한 설명</label>
 			<input type="text" name="shortintro" id="shortintro" value="간단한 설명"/>
+			<form:errors cssClass="err" path="shortintro"/>
 		</p>
 		
 		<p>
-			<label for="mainimage">메인 이미지</label>
-			<input type="file" name="mainimage" id="mainimage" value=""/>
+			<label for="uploadmainimage">메인 이미지</label>
+			<input type="file" name="uploadmainimage" id="uploadmainimage" value=""/>
 		</p>
 		
 		<p>
 			<label for="ingredient">재료</label>
-			<input type="text" name="ingredient" id="ingredient" value="재료"/>
+			<textarea id="ingredient" name="ingredient" style="height:200px;width:380px;"
+			>재료</textarea>
 		</p>
 		
 		<p>
 			<label for="intro">설명</label>
-			<input type="text" name="intro" id="intro" value="설명"/>
+			<textarea id="intro" name="intro" style="height:200px;width:380px;"
+			>설명</textarea>
 		</p>	
 		
 		<p>
@@ -72,23 +75,23 @@
 		</p>
 
 		<p>
-			<label for="image1">그림파일1</label>
-			<input type="file" name="image1" id="image1" value=""/>
+			<label for="uploadimage1">그림파일1</label>
+			<input type="file" name="uploadimage1" id="uploadimage1" value=""/>
 		</p>
 		
 		<p>
-			<label for="image2">그림파일2</label>
-			<input type="file" name="image1" id="image1" value=""/>
+			<label for="uploadimage2">그림파일2</label>
+			<input type="file" name="uploadimage2" id="uploadimage2" value=""/>
 		</p>
 		
 		<p>
-			<label for="image3">그림파일3</label>
-			<input type="file" name="image1" id="image1" value=""/>
+			<label for="uploadimage3">그림파일3</label>
+			<input type="file" name="uploadimage3" id="uploadimage3" value=""/>
 		</p>
 		
 		<p>
-			<label for="image4">그림파일4</label>
-			<input type="file" name="image1" id="image1" value=""/>
+			<label for="uploadimage4">그림파일4</label>
+			<input type="file" name="uploadimage4" id="uploadimage4" value=""/>
 		</p>
 		
 		

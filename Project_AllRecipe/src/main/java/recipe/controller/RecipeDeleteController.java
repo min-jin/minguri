@@ -36,7 +36,7 @@ public class RecipeDeleteController {
 		Recipe recipe = recipeDao.GetData(recnum);
 		
 		//레시피 등록할 때 이미지가 저장된 폴더, 폴더 내에 저장된 이미지도 삭제되도록 해야함
-		String uploadDir = servletContext.getRealPath("/resources/");
+		String uploadDir = servletContext.getRealPath("/resources/recipe/");
 		
 		//DEV : 일단은 파일 하나 하나 지우는 하드 코딩 : 하나로 묶어서 지울 수 있도록 해야함
 		

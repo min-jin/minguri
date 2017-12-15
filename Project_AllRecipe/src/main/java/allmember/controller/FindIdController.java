@@ -37,7 +37,7 @@ public class FindIdController {
 		if(bean==null) {
 			
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö¾Ê½À´Ï´Ù.')");
+			writer.println("alert('ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ì•ŠìŠµë‹ˆë‹¤.')");
 			writer.println("history.back()");
 			writer.println("</script>");
 			writer.flush();
@@ -45,7 +45,7 @@ public class FindIdController {
 			return getPage;
 		}else {
 			writer.println("<script type='text/javascript'>");
-			writer.println("alert('È¸¿ø´ÔÀÇ ¾ÆÀÌµğ´Â "+bean.getId()+"ÀÔ´Ï´Ù.')");
+			writer.println("alert('íšŒì›ë‹˜ì˜ ì•„ì´ë””ëŠ” "+bean.getId()+"ì…ë‹ˆë‹¤.')");
 			writer.println("location.href='login.mem?id="+bean.getId()+"'");
 			writer.println("</script>");
 			writer.flush();

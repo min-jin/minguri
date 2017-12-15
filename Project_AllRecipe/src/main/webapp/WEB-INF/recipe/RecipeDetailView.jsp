@@ -9,24 +9,24 @@
 </head>
 <body>
 레시피 상세 보기
-<c:set var="mainImage" value="http://localhost:9090${pageContext.request.contextPath }/resources/${recipe.mainimage }"/>
-<c:set var="image1" value="http://localhost:9090${pageContext.request.contextPath }/resources/${recipe.image1 }"/>
-<c:set var="image2" value="http://localhost:9090${pageContext.request.contextPath }/resources/${recipe.image2 }"/>
-<c:set var="image3" value="http://localhost:9090${pageContext.request.contextPath }/resources/${recipe.image3 }"/>
-<c:set var="image4" value="http://localhost:9090${pageContext.request.contextPath }/resources/${recipe.image4 }"/>
+<c:set var="uploadmainimage" value="http://localhost:9090${pageContext.request.contextPath }/resources/recipe/${recipe.mainimage }"/>
+<c:set var="uploadimage1" value="http://localhost:9090${pageContext.request.contextPath }/resources/recipe/${recipe.image1 }"/>
+<c:set var="uploadimage2" value="http://localhost:9090${pageContext.request.contextPath }/resources/recipe/${recipe.image2 }"/>
+<c:set var="uploadimage3" value="http://localhost:9090${pageContext.request.contextPath }/resources/recipe/${recipe.image3 }"/>
+<c:set var="uploadimage4" value="http://localhost:9090${pageContext.request.contextPath }/resources/recipe/${recipe.image4 }"/>
 
 
 <div align="center">
 	<table border="1">
 		<tr>
 			<td>
-				<img src="${mainImage }"/>
+				<img src="${uploadmainimage }"/>
 			</td>
 			
 			<td align="center">
 				<table border="1">
 					<tr height="50">
-						<td width="120">요리명</td>
+						<td width="120">요리이름</td>
 						<td width="300"><c:out value="${recipe.psubject }"/></td>
 					</tr>
 					
@@ -47,35 +47,32 @@
 						<td width="300"><c:out value="${recipe.movieurl }"/></td>
 					</tr>
 					
-					<tr height="50">
-						<td width="120">재료</td>
-						<td width="300"><c:out value="${recipe.ingredient }"/></td>
-					</tr>
+					
 				</table>
 			</td>
 		</tr>
 		
 			<tr>
-				<td>
-					<img src="${image1 }"/>
+				<td colspan ="2">
+					<img src="${uploadimage1 }"/>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>
-					<img src="${image2 }"/>
+				<td colspan ="2">
+					<img src="${uploadimage2 }"/>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>
-					<img src="${image3 }"/>
+				<td colspan ="2">
+					<img src="${uploadimage3 }"/>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>
-					<img src="${image4 }"/>
+				<td colspan ="2">
+					<img src="${uploadimage4 }"/>
 				</td>
 			</tr>
 			
@@ -83,15 +80,33 @@
 				<td width="120">설명</td>
 				<td width="300"><c:out value="${recipe.intro }"/></td>
 			</tr>
-		
 	</table>
+
+
+
 </div>
-<input type="button" value="레시피" onclick="goList();"/>
+
+<div align = "center">
+	<input type="button" value="레시피" onclick="goList();"/>
+	
+	<input type="button" value="삭제" value="${recipe.recnum }" onclick="goDelete('${recipe.recnum}')"/>
+	
+	<input type="button" value="수정" value="${recipe.recnum }" onclick="goUpdate('${recipe.recnum}')"/>
+</div>
+
 </body>
 
 <script type="text/javascript">
 	function goList(){// 버튼 누르면 레시피로 이동
 		location.href='list.rec'; //get 방식
+	}
+	
+	function goUpdate(num){//수정하기 버튼눌렀을 때 recnum을 담아서 간다
+		location.href = 'update.rec?recnum='+num; //RecipeUpdateController get
+	}
+	
+	function goDelete(num){//삭제 버튼 눌렀을 때 recnum을 담아서 간다
+		location.href = 'delete.rec?recnum='+num; //RecipeDeleteController get 
 	}
 </script>
 <%@include file="../MainBottom.jsp" %>

@@ -9,25 +9,25 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class AllMember {
 	private String id;
 	
-	@NotEmpty(message="ÆĞ½º¿öµå¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.")
+	@NotEmpty(message="íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.")
 	private String password;
 	
-	@NotEmpty(message="´Ğ³×ÀÓÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.")
+	@NotEmpty(message="ë‹‰ë„¤ì„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.")
 	private String nickname;
 	
-	@NotEmpty(message="ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä.")
+	@NotEmpty(message="ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.")
 	private String name;
 	
 	private String email1;
 	private String email2;
 	
-	@NotEmpty(message="ÈŞ´ëÆù ¾ÕÀÚ¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.")
+	@NotEmpty(message="íœ´ëŒ€í° ì•ìë¦¬ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.")
 	private String hp1;
 	
-	@Pattern(regexp="^[0-9]{3,4}$",message="3~4ÀÚ ¼ıÀÚ·Î ÀÔ·ÂÇØÁÖ¼¼¿ä.")
+	@Pattern(regexp="^[0-9]{3,4}$",message="3~4ì ìˆ«ìë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”.")
 	private String hp2;
 	
-	@Pattern(regexp="^[0-9]{4}$",message="3~4ÀÚ ¼ıÀÚ·Î ÀÔ·ÂÇØÁÖ¼¼¿ä.")
+	@Pattern(regexp="^[0-9]{4}$",message="3~4ì ìˆ«ìë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”.")
 	private String hp3;
 	
 	private String postnumber;

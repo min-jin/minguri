@@ -5,13 +5,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+div{
+	align : center;
+}
+ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+li {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+}
+</style>
+
+
 <title>Insert title here</title>
 </head>
 <!-- 메인 이미지와 한 줄 설명, 이미지 클릭 시 상세보기 화면으로 이동,  테마보기 닫기로 카테고리 보이기 -->
 <!-- Note : 입력, 수정, 추가, 삭제 확인해야함, 자신이 쓴 글만 삭제되는 지 확인 해야함 -->
 <body>
-<!--테마 메뉴 : 12.03 미완성 -->
-<div class="recipe_tag">
+<!--테마 메뉴 : 12.04 테스트 해봐야 -->
+<div class="recipe_tag" align="center" display = "none">
 	<ul>
 		<li>
 			<a>
@@ -90,26 +109,23 @@
 			</a>
 		</li>
 	</ul>
-	<a href="javascript:tag_btn();" class="tag_btn on"></a>
-</div>
-
+</div><br><br><br><br>
+<div id ="toggle_theme">테마</div>
+<br><br>
 <h2>레시피 홈 RecipeList.jsp</h2>
 	
 	<table>
-	<c:forEach items ="${recipeLists }"  var = "recipe">
-		
+	<c:forEach items ="${recipeLists }"  var ="recipe">
+	<c:set var="uploadmainimage" value="http://localhost:9090${pageContext.request.contextPath }/resources/recipe/${recipe.mainimage }"/>		
 		<tr>
 			<td>
-				<a href="detail.rec?recnum=<c:out value="${recipe.num }"/>">
-				<img src="<c:out value="${recipe.mainimage }"/>" alt="" / style="width:100%">
-				<p class="s_title">간단한 설명</p>
+				<a href="detail.rec?recnum=<c:out value="${recipe.recnum }"/>">
+				<img src="${uploadmainimage }"/>
+				<p class="s_title"><c:out value="${recipe.shortintro}"/></p>
 				<p class="b_title"><c:out value="${recipe.psubject }"/></p>
 				</a>
 			</td>
 		</tr>
-		
-		
-	
 	
 	</c:forEach>
 		<tr>
@@ -117,13 +133,6 @@
 				<input type="button" value="추가" onclick="insert();"/>
 			</td>
 			
-			<td>
-				<input type="button" value="수정" value="${recipe.num }" onclick="goUpdate('${recipe.num}')"/>
-			</td>
-			
-			<td>
-				<input type="button" value="삭제" value="${recipe.num }" onclick="goDelete('${recipe.num}')"/>
-			</td>
 		</tr>
 		
 	</table>
@@ -133,38 +142,28 @@
 		${pageInfo.pagingHtml }
 	</center>
 	
-	
+<!-- 레시피 등록 , 수정과 삭제는 자세히 보기에서 -->
 <script type="text/javascript">
 	
 	function insert(){
 		location.href='insert.rec'; //get 방식
 	}
 	
-	function goUpdate(num){
-		location.href = 'update.rec?recnum = ' + num; //RecipeUpdateController get
-	}
-	
-	function goDelete(num){
-		location.href = 'delete.rec?recnum =' + num; //RecipeDeleteController get 
-	}
-	
-</script>	
+</script>
+
+<!--메뉴 태그 -->
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+        $("#toggle_theme").click(function(){
+            $(".recipe_tag").slideToggle(500);
+        });
+    });
+
+</script >
+
 </body>
 <%@include file="../MainBottom.jsp" %>
    
 </html>
 
-<!-- 이밥차는 테이블 안 만들고 div - ul - li 로 화면 구분
-<div class="rec_list">
-		<ul class="clr">
-						<li class="ml_none">
-				<a href="/recipe.php?id=view&eTheme=1&idx=1074">
-					<div class="img_wrap"><img src="data/recipe/20170521143444-K3XQM.jpg" alt="" / style="width:100%"></div>
-					<div class="text_box">
-						<p class="s_title">입에 착착 감기는 부드러움</p>
-						<p class="b_title">게살치즈죽</p>
-					</div>
-				</a>
-			</li>
-			</ul>
-			</div> -->
