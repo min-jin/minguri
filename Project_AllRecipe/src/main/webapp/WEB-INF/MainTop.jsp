@@ -8,6 +8,7 @@
 
 <%
 	String contextPath=request.getContextPath();
+	String Path=request.getRealPath("/map");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -117,12 +118,12 @@ a {
    <nav id="topMenu" >
 <div align="center" >
    <ul>
-      <li><a class="menuLink" href="#">레시피</a></li>
+      <li><a class="menuLink" href="<%= contextPath %>/list.rec">레시피</a></li>
       <li><a class="menuLink" href="<%= contextPath %>/talk/list.bod">토크</a></li>
       <li><a class="menuLink" href="">요리정보</a></li>
       <li><a class="menuLink" href="">시장보기</a></li>
       <li><a class="menuLink" href="#">내가쉐프</a></li>
-      <li><a class="menuLink" href="#">올맛집</a></li>
+      <li><a class="menuLink" href="<%= contextPath %>/martMap.mt">올맛집</a></li>
    </ul>
    </div>
    </nav>
