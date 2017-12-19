@@ -25,8 +25,8 @@
 	
 	<update id="UpdateData">
 		update product set
-		pname = #{pname}, capacity = #{capacity}, price = #{price}, stock = #{stock}, comapny = #{company},
-		origin = #{origin}, pimage = #{pimage}, default
+		pname = #{pname}, capacity = #{capacity}, price = #{price}, stock = #{stock}, company = #{company},
+		origin = #{origin}, pimage = #{pimage}
 		where pnum = #{pnum}
 	</update>
 	
