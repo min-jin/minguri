@@ -2,32 +2,36 @@ package product.model;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
 public class Product {
 	private int pnum;
+	
+	@NotEmpty(message = "제품 이름 입력해야함")
 	private String pname;
+	
 	private String capacity;
+	
+	@NotNull(message = "가격 입력해야 함")
 	private int price;
+	
+	@NotNull(message = "물건 재고 입력해야 함")
 	private int stock;
 	private String company;
+	
+	@NotEmpty(message = "원산지 입력해야 함")
 	private String origin;
 	private String pimage;
+	private MultipartFile uploadpimage;
 	private Timestamp inputdate;
+	
 	public Product() {
 		super();
 	}
-	public Product(int pnum, String pname, String capacity, int price, int stock, String company, String origin,
-			String pimage, Timestamp inputdate) {
-		super();
-		this.pnum = pnum;
-		this.pname = pname;
-		this.capacity = capacity;
-		this.price = price;
-		this.stock = stock;
-		this.company = company;
-		this.origin = origin;
-		this.pimage = pimage;
-		this.inputdate = inputdate;
-	}
+	
 	public int getPnum() {
 		return pnum;
 	}
@@ -82,6 +86,21 @@ public class Product {
 	public void setInputdate(Timestamp inputdate) {
 		this.inputdate = inputdate;
 	}
+	
+	public void setUploadpimage(MultipartFile uploadpimage) {
+		
+		this.uploadpimage = uploadpimage;
+		
+		if(this.uploadpimage != null) {
+			this.pimage = this.uploadpimage.getOriginalFilename();
+		}
+	}
+	
+	public MultipartFile getUploadpimage() {
+		
+		return uploadpimage;
+	}
+	
 	@Override
 	public String toString() {
 		return "Product [pnum=" + pnum + ", pname=" + pname + ", capacity=" + capacity + ", price=" + price + ", stock="

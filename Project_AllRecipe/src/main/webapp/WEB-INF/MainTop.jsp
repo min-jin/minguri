@@ -121,7 +121,7 @@ a {
       <li><a class="menuLink" href="<%= contextPath %>/list.rec">레시피</a></li>
       <li><a class="menuLink" href="<%= contextPath %>/talk/list.bod">토크</a></li>
       <li><a class="menuLink" href="">요리정보</a></li>
-      <li><a class="menuLink" href="">시장보기</a></li>
+      <li><a class="menuLink" href="<%= contextPath %>/list.mt">시장보기</a></li>
       <li><a class="menuLink" href="#">내가쉐프</a></li>
       <li><a class="menuLink" href="<%= contextPath %>/martMap.mt">올맛집</a></li>
    </ul>

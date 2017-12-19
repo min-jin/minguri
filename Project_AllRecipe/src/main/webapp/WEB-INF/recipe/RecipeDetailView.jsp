@@ -85,13 +85,15 @@
 
 
 </div>
-
+<br>
 <div align = "center">
 	<input type="button" value="레시피" onclick="goList();"/>
 	
 	<input type="button" value="삭제" value="${recipe.recnum }" onclick="goDelete('${recipe.recnum}')"/>
 	
 	<input type="button" value="수정" value="${recipe.recnum }" onclick="goUpdate('${recipe.recnum}')"/>
+	
+	<input type="button" value="스크랩하기" value="${recipe.recnum }" onclick="goScrap('${recipe.recnum}')"/>
 </div>
 
 </body>
@@ -107,6 +109,10 @@
 	
 	function goDelete(num){//삭제 버튼 눌렀을 때 recnum을 담아서 간다
 		location.href = 'delete.rec?recnum='+num; //RecipeDeleteController get 
+	}
+	
+	function goScrap(num){//스크랩 버튼 눌렀을 때 recnum을 통해 정보를 가져와서 마이페이지와 연동
+		
 	}
 </script>
 <%@include file="../MainBottom.jsp" %>

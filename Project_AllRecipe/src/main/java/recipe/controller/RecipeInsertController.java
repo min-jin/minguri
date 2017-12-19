@@ -77,7 +77,7 @@ public class RecipeInsertController {
 		System.out.println("session id : " + session.getAttribute("id"));
 		AllMember writer = new AllMember();
 		writer = (AllMember)session.getAttribute("loginInfo");
-		System.out.println("writer.getNickname() : "+writer.getId());
+		System.out.println("writer.getId() : "+writer.getId());
 		
 		recipe.setWriter(writer.getId());
 				

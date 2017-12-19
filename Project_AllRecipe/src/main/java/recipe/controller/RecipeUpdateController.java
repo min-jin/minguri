@@ -32,7 +32,7 @@ public class RecipeUpdateController {
 	@Autowired
 	private RecipeDao recipeDao;
 	
-	//RecipeList.jsp에서 수정하기 누르면  GET방식으로 넘어온다
+	//RecipeDetailViewList.jsp에서 수정하기 누르면  GET방식으로 넘어온다
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public String doActionGet(HttpSession session, @RequestParam(value = "recnum", required = true) int recnum, Model model) {
 		

@@ -1,11 +1,11 @@
 package ingredient.model;
 
 public class Ingredient {
-	private int inum;
-	private int recnum;
-	private String fname;
-	private String iname;
-	private String mass;
+	private int inum;	//재료 넘버
+	private int recnum;	//레시피 넘버
+	private String fname;	//음식 이름
+	private String iname;	//재료 이름
+	private String mass;	//용량
 	public Ingredient() {
 		super();
 	}
