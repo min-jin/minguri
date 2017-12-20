@@ -20,6 +20,10 @@
     <link href="<%= contextPath %>/resources/css/modern-business.css" rel="stylesheet">
    
     <script src="<%= contextPath %>/resources/js/jquery.js" type="text/javascript"></script>
+    
+    <!-- 채팅하기 위한 웹소켓 자바스크립트 파일  -->
+    <script src="<%= contextPath %>/resources/js/sockjs-1.0.3.min.js" type="text/javascript"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 a {

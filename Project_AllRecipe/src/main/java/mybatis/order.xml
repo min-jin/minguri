@@ -4,4 +4,13 @@
  
 <mapper namespace="order.model.Order" >
 
+	<insert id="InsertData" parameterType="MyOrder">
+		insert into allorder(onum, mid, pnum, qty, price, amount, orderdate)
+		values (orderseq.nextval, #{mid}, #{pnum}, #{qty}, #{price}, #{amount}, sysdate)
+	</insert>
+	
+	<select id="GetMaxOrderNum" resultType="int">
+		select max(onum) as onum from allorder
+	</select>
+
 </mapper>
