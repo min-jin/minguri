@@ -1,4 +1,4 @@
---È¸¿ø Å×ÀÌºí 
+--È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ 
 
 create table allmember(
 	id 			varchar2(20) primary key,	
@@ -10,15 +10,15 @@ create table allmember(
 	hp1 		varchar2(4) not null,		
   	hp2 		varchar2(8) not null,
   	hp3 		varchar2(8) not null,
-	postnumber	varchar2(20),			--¿ìÆí¹øÈ£
+	postnumber	varchar2(20),			--ï¿½ï¿½ï¿½ï¿½ï¿½È£
 	address1 	varchar2(70),			
 	address2 	varchar2(70),
-	year		varchar2(10),					--»ý³â¿ùÀÏ
+	year		varchar2(10),					--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	month		varchar2(10),
 	day			varchar2(10),
 	gender 		varchar2(10),
 	img			varchar2(30),
-	joindate 	date default sysdate	--°¡ÀÔ³¯Â¥
+	joindate 	date default sysdate	--ï¿½ï¿½ï¿½Ô³ï¿½Â¥
 ) ;
 
 create sequence recipereq start with 1 increment by 1 nocache ;
@@ -27,17 +27,17 @@ drop table recipe cascade constraints;
 create table recipe(
 	recnum		number primary key,	
 	writer		varchar2(30) references allmember(id) on delete set null,
-	psubject	varchar2(60) default 'Á¦¸ñ¾øÀ½',
-	intro		varchar2(2000),		--¼Ò°³
-	mainimage	varchar2(40),		--´ë¹®ÀÌ¹ÌÁö
-	kind 		number,				--Á¾·ù	
-	situation	number,				--»óÈ²
-	method		number,				--¹æ¹ý
-	ingredient	number,				--Àç·á
-	person		varchar2(20),		--ÀÎ¿ø¼ö
-	time		varchar2(20),		--¿ä¸®½Ã°£
-	movieurl	varchar2(60),		--µ¿¿µ»ó ¸µÅ©ÁÖ¼Ò
-	scrap		number default 0,	--½ºÅ©·¦¼ö
+	psubject	varchar2(60) default 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
+	intro		varchar2(2000),		--ï¿½Ò°ï¿½
+	mainimage	varchar2(40),		--ï¿½ë¹®ï¿½Ì¹ï¿½ï¿½ï¿½
+	kind 		number,				--ï¿½ï¿½ï¿½ï¿½	
+	situation	number,				--ï¿½ï¿½È²
+	method		number,				--ï¿½ï¿½ï¿½
+	ingredient	number,				--ï¿½ï¿½ï¿½
+	person		varchar2(20),		--ï¿½Î¿ï¿½ï¿½ï¿½
+	time		varchar2(20),		--ï¿½ä¸®ï¿½Ã°ï¿½
+	movieurl	varchar2(60),		--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½Ö¼ï¿½
+	scrap		number default 0,	--ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½
 	image1		varchar2(40),		
 	image2		varchar2(40),		
 	image3		varchar2(40),		
@@ -46,7 +46,7 @@ create table recipe(
 );
 
 
-insert into recipe(recnum,writer,psubject,intro,mainimage) values(recipereq.nextval,'admin','Á¦¸ñÀÔ´Ï´Ù','¼Ò°³±ÛÀÔ´Ï´Ù','ÄÚ¾Ë¶ó.jpg'); 
+insert into recipe(recnum,writer,psubject,intro,mainimage) values(recipereq.nextval,'admin','ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½','ï¿½Ò°ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½','ï¿½Ú¾Ë¶ï¿½.jpg'); 
 
 create sequence ingredientreq start with 1 increment by 1 nocache ;
 
@@ -70,18 +70,20 @@ create table procedure(
 	prostep		number
 );
 
-
+drop sequence talkseq;
 create sequence talkseq start with 1 increment by 1 nocache ;
 
+drop table talk;
 create table talk(
 	tnum		number primary key,
 	tid 		varchar2(20) not null,
 	tcontent	varchar2(2000),
 	timage		varchar2(30),
+	tmovie		varchar2(60),
 	inputdate	date default sysdate
 );
 
-insert into talk values(talkseq.nextval,'admin','³»¿ëÀÔ´Ï´Ù.','Koala.jpg',sysdate);
+insert into talk(tnum,tid,tcontent,timage,inputdate) values(talkseq.nextval,'admin','ë‚´ìš©ìž…ë‹ˆë‹¤.','Koala.jpg',sysdate);
 
 create sequence cookinfoseq start with 1 increment by 1 nocache ;
 
@@ -124,9 +126,11 @@ create table allorder(
   orderdate	date default sysdate
 ); 
 
-
+drop sequence replyreq;
 
 create sequence replyreq start with 1 increment by 1 nocache ;
+
+drop table reply;
 
 create table reply(
 	renum		number primary key,
@@ -139,6 +143,7 @@ create table reply(
 	ref 		number not null,	
 	restep 		number not null,
 	relevel 	number not null,
+	parentnum 	number not null,
 	inputdate	date default sysdate
 );
 

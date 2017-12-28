@@ -14,6 +14,7 @@ public class Reply {
 	private int ref;
 	private int restep;
 	private int relevel;
+	private int parentnum;
 	private Timestamp inputdate;
 	private String dateString;
 	
@@ -23,7 +24,7 @@ public class Reply {
 		super();
 	}
 	public Reply(int renum, String cate, int canum, String rewriter, String content, String renickname, String reimg,
-			int ref, int restep, int relevel, Timestamp inputdate) {
+			int ref, int restep, int relevel,int parentnum, Timestamp inputdate) {
 		super();
 		this.renum = renum;
 		this.cate = cate;
@@ -35,6 +36,7 @@ public class Reply {
 		this.ref = ref;
 		this.restep = restep;
 		this.relevel = relevel;
+		this.parentnum=parentnum;
 		this.inputdate = inputdate;
 	}
 	public int getRenum() {
@@ -113,12 +115,21 @@ public class Reply {
 			this.dateString=sdf.format(inputdate);
 		}
 	}
+	
+	public int getParentnum() {
+		return parentnum;
+	}
+	public void setParentnum(int parentnum) {
+		this.parentnum = parentnum;
+	}
 	@Override
 	public String toString() {
 		return "Reply [renum=" + renum + ", cate=" + cate + ", canum=" + canum + ", rewriter=" + rewriter + ", content="
 				+ content + ", renickname=" + renickname + ", reimg=" + reimg + ", ref=" + ref + ", restep=" + restep
-				+ ", relevel=" + relevel + ", inputdate=" + inputdate + "]";
+				+ ", relevel=" + relevel + ", parentnum=" + parentnum + ", inputdate=" + inputdate + ", dateString="
+				+ dateString + "]";
 	}
+	
 	
 	
 }

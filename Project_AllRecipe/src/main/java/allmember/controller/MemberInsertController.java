@@ -36,6 +36,7 @@ public class MemberInsertController {
 	public String goInsert(AllMember member,HttpServletResponse response) throws IOException {
 		int cnt=0;
 		System.out.println(member);
+		member.setImg("basic.png");
 		cnt=adao.insertMember(member);
 		
 		if(cnt>0) {

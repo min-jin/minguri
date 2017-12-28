@@ -66,7 +66,7 @@ public class LoginController {
 			return getPage;
 		}else {
 			if(member.getId().equals(id) && member.getPassword().equals(password)) {
-				session.setAttribute("loginInfo", member);
+				session.setAttribute("loginInfo",member);
 				writer.println("<script type='text/javascript'>");
 				writer.println("alert('"+id+"님 어서오세요.')");
 				writer.println("location.href='mainPage.rec'");

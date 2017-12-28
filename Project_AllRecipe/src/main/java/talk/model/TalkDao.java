@@ -27,5 +27,29 @@ public class TalkDao {
 		talkContainer=sqlSessionTemplate.selectOne(namespace+".containerByTid", tnum);
 		return talkContainer;
 	}
+
+	public int TalkInsert(Talk talk) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.insert(namespace+".TalkInsert", talk);
+		return cnt;
+	}
+
+	public Talk selectByTnum(int tnum) {
+		Talk talk=null;
+		talk=sqlSessionTemplate.selectOne(namespace+".selectByTnum", tnum);
+		return talk;
+	}
+
+	public int updateTalk(Talk talk) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.update(namespace+".updateTalk", talk);
+		return cnt;
+	}
+
+	public int deleteTalk(int tnum) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.delete(namespace+".deleteTalk", tnum);
+		return cnt;
+	}
 	
 }
