@@ -8,6 +8,7 @@
 
 <%
 	String contextPath=request.getContextPath();
+	String Path=request.getRealPath("/map");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,6 +20,10 @@
     <link href="<%= contextPath %>/resources/css/modern-business.css" rel="stylesheet">
    
     <script src="<%= contextPath %>/resources/js/jquery.js" type="text/javascript"></script>
+    
+    <!-- 채팅하기 위한 웹소켓 자바스크립트 파일  -->
+    <script src="<%= contextPath %>/resources/js/sockjs-1.0.3.min.js" type="text/javascript"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 a {
@@ -117,12 +122,12 @@ a {
    <nav id="topMenu" >
 <div align="center" >
    <ul>
-      <li><a class="menuLink" href="#">레시피</a></li>
+      <li><a class="menuLink" href="<%= contextPath %>/list.rec">레시피</a></li>
       <li><a class="menuLink" href="<%= contextPath %>/talk/list.bod">토크</a></li>
       <li><a class="menuLink" href="">요리정보</a></li>
-      <li><a class="menuLink" href="">시장보기</a></li>
+      <li><a class="menuLink" href="<%= contextPath %>/list.mt">시장보기</a></li>
       <li><a class="menuLink" href="#">내가쉐프</a></li>
-      <li><a class="menuLink" href="#">올맛집</a></li>
+      <li><a class="menuLink" href="<%= contextPath %>/martMap.mt">올맛집</a></li>
    </ul>
    </div>
    </nav>

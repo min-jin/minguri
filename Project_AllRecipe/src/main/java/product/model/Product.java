@@ -2,32 +2,35 @@ package product.model;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
 public class Product {
-	private int pnum;
-	private String pname;
-	private String capacity;
-	private int price;
-	private int stock;
-	private String company;
-	private String origin;
-	private String pimage;
+	private int pnum;	//상품번호
+	
+	@NotEmpty(message = "제품 이름 입력해야함")
+	private String pname;	//상품이름
+	
+	@NotNull(message = "가격 입력해야 함")
+	private int price;		//가격
+	
+	@NotNull(message = "물건 재고 입력해야 함")
+	private int stock;		//재고
+	private String company;		//제조회사
+	
+	@NotEmpty(message = "원산지 입력해야 함")
+	private String origin;		//원산지
+	private String pimage;		//상품이미지
+	private int orderqty;		//주문수량
+	private MultipartFile uploadpimage;
 	private Timestamp inputdate;
+	
 	public Product() {
 		super();
 	}
-	public Product(int pnum, String pname, String capacity, int price, int stock, String company, String origin,
-			String pimage, Timestamp inputdate) {
-		super();
-		this.pnum = pnum;
-		this.pname = pname;
-		this.capacity = capacity;
-		this.price = price;
-		this.stock = stock;
-		this.company = company;
-		this.origin = origin;
-		this.pimage = pimage;
-		this.inputdate = inputdate;
-	}
+	
 	public int getPnum() {
 		return pnum;
 	}
@@ -40,12 +43,7 @@ public class Product {
 	public void setPname(String pname) {
 		this.pname = pname;
 	}
-	public String getCapacity() {
-		return capacity;
-	}
-	public void setCapacity(String capacity) {
-		this.capacity = capacity;
-	}
+	
 	public int getPrice() {
 		return price;
 	}
@@ -76,15 +74,38 @@ public class Product {
 	public void setPimage(String pimage) {
 		this.pimage = pimage;
 	}
+	public int getOrderqty() {
+		return orderqty;
+	}
+
+	public void setOrderqty(int orderqty) {
+		this.orderqty = orderqty;
+	}
+
 	public Timestamp getInputdate() {
 		return inputdate;
 	}
 	public void setInputdate(Timestamp inputdate) {
 		this.inputdate = inputdate;
 	}
+	
+	public void setUploadpimage(MultipartFile uploadpimage) {
+		
+		this.uploadpimage = uploadpimage;
+		
+		if(this.uploadpimage != null) {
+			this.pimage = this.uploadpimage.getOriginalFilename();
+		}
+	}
+	
+	public MultipartFile getUploadpimage() {
+		
+		return uploadpimage;
+	}
+	
 	@Override
 	public String toString() {
-		return "Product [pnum=" + pnum + ", pname=" + pname + ", capacity=" + capacity + ", price=" + price + ", stock="
+		return "Product [pnum=" + pnum + ", pname=" + pname + ", price=" + price + ", stock="
 				+ stock + ", company=" + company + ", origin=" + origin + ", pimage=" + pimage + ", inputdate="
 				+ inputdate + "]";
 	}

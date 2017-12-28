@@ -3,13 +3,13 @@ package order.model;
 import java.sql.Timestamp;
 
 public class Order {
-	private int onum;
-	private String mid;
-	private int pnum;
-	private int qty;
-	private int price;
-	private int amount;
-	private Timestamp orderdate;
+	private int onum;		//주문번호
+	private String mid;		//주문자 아이디
+	private int pnum;		//제품 번호
+	private int qty;		//수량
+	private int price;		//가격	
+	private int amount;	//금액
+	private Timestamp orderdate;	//시간
 	public Order() {
 		super();
 	}

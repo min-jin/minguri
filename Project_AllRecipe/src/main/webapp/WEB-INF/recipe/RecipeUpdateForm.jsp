@@ -29,7 +29,7 @@
 		
 		<p><!-- 요리 분류의 value 값 숫자로   12.15 현재 술&칵테일만 선택됨 -->
 			<label for="theme">요리 분류</label>
-				<input type="hidden" name="recnum" value="${recipe.recnum}">
+				<input type="hidden" name="recnum" value="${recipe.recnum}"/>
 				<select name="theme" id="theme" >
 					<option value="" selected>선택</option>
 					<option value="1" <c:if test="${recipe.theme == 1 }"/> selected>밥요리</option>
@@ -109,7 +109,7 @@
 		<p class="btnRow">
 			<input type="submit" value="수정하기" id="btnSubmit"/>
 			<input type="button" value="레시피" onclick="goList();"/>
-			<input type="button" value="홈으로" onclick="goHome();"/>
+			<input type="button" value="메인화면" onclick="goHome();"/>
 		</p>
 			
 	</form:form>
@@ -125,7 +125,7 @@ function goHome(){//홈으로 이동
 	location.href = 'mainPage.rec';
 }
 
-
 </script>
+
 <%@include file="../MainBottom.jsp" %>
 </html>

@@ -4,4 +4,35 @@
  
 <mapper namespace="product.model.Product" >
 
+	<select id="GetTotalCount" resultType="int">
+		select count(*) from product
+	</select>
+	
+	<select id="GetDataList" resultType="MyProduct">
+		select * from product
+		order by pnum desc
+	</select>
+	
+	<select id="GetData" resultType="MyProduct">
+		select * from product
+		where pnum = #{pnum}
+	</select>
+	
+	<insert id="InsertData" parameterType="MyProduct">
+		insert into product (pnum, pname, capacity, price, stock, company, origin, pimage, inputdate )
+		values (productseq.nextval, #{pname},#{capacity},#{price},#{stock},#{company},#{origin},#{pimage}, sysdate)	
+	</insert>
+	
+	<update id="UpdateData">
+		update product set
+		pname = #{pname}, capacity = #{capacity}, price = #{price}, stock = #{stock}, company = #{company},
+		origin = #{origin}, pimage = #{pimage}
+		where pnum = #{pnum}
+	</update>
+	
+	<delete id="DeleteData">
+		delete from product
+		where pnum = #{pnum}
+	</delete>
+	
 </mapper>

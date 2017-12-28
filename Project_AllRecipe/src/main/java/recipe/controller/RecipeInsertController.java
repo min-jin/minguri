@@ -14,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -77,7 +76,7 @@ public class RecipeInsertController {
 		System.out.println("session id : " + session.getAttribute("id"));
 		AllMember writer = new AllMember();
 		writer = (AllMember)session.getAttribute("loginInfo");
-		System.out.println("writer.getNickname() : "+writer.getId());
+		System.out.println("writer.getId() : "+writer.getId());
 		
 		recipe.setWriter(writer.getId());
 				

@@ -25,9 +25,10 @@ public class RecipeListController {
 	@Autowired
 	private RecipeDao recipeDao;
 	
-	//홈페이지에서 레시피 버튼 클릭시 이동, 검색 기능 없음(kewyword )
+	//홈페이지에서 레시피 버튼 클릭시 이동kewyword )
 	@RequestMapping(value = command)
 	public ModelAndView doActionPost(
+			@RequestParam(value="keyword", required = false)String keyword,
 			@RequestParam(value="whatColumn", required = false)String whatColumn,
 			@RequestParam(value="pageNumber", required = false)String pageNumber,
 			@RequestParam(value="pageSize", required = false)String pageSize,
@@ -47,7 +48,7 @@ public class RecipeListController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, whatColumn,null,null);
+		Paging pageInfo = new Paging(pageNumber, pageSize, totalCount, url, whatColumn,keyword,null);
 		//keyword를 null값으로 설정
 		
 		System.out.println("offset : " + pageInfo.getOffset() + ", ");
