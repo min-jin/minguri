@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class AllMember {
 	private String id;
@@ -20,6 +21,7 @@ public class AllMember {
 	
 	private String email1;
 	private String email2;
+	private String email3;
 	
 	@NotEmpty(message="휴대폰 앞자리를 입력해주세요.")
 	private String hp1;
@@ -38,13 +40,16 @@ public class AllMember {
 	private String day;
 	private String gender;
 	private String img;
+	private String img2;
+	private MultipartFile imgUpload;
 	private Timestamp joindate;
 	public AllMember() {
 		super();
 	}
-	public AllMember(String id, String password, String nickname, String name, String email1, String email2, String hp1,
-			String hp2, String hp3, String postnumber, String address1, String address2, String year, String month,
-			String day, String gender, String img, Timestamp joindate) {
+	public AllMember(String id, String password, String nickname, String name, String email1, String email2,
+			String email3, String hp1, String hp2, String hp3, String postnumber, String address1, String address2,
+			String year, String month, String day, String gender, String img, String img2, MultipartFile imgUpload,
+			Timestamp joindate) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -52,6 +57,7 @@ public class AllMember {
 		this.name = name;
 		this.email1 = email1;
 		this.email2 = email2;
+		this.email3 = email3;
 		this.hp1 = hp1;
 		this.hp2 = hp2;
 		this.hp3 = hp3;
@@ -63,6 +69,8 @@ public class AllMember {
 		this.day = day;
 		this.gender = gender;
 		this.img = img;
+		this.img2 = img2;
+		this.imgUpload = imgUpload;
 		this.joindate = joindate;
 	}
 	public String getId() {
@@ -100,6 +108,12 @@ public class AllMember {
 	}
 	public void setEmail2(String email2) {
 		this.email2 = email2;
+	}
+	public String getEmail3() {
+		return email3;
+	}
+	public void setEmail3(String email3) {
+		this.email3 = email3;
 	}
 	public String getHp1() {
 		return hp1;
@@ -167,6 +181,21 @@ public class AllMember {
 	public void setImg(String img) {
 		this.img = img;
 	}
+	public String getImg2() {
+		return img2;
+	}
+	public void setImg2(String img2) {
+		this.img2 = img2;
+	}
+	public MultipartFile getImgUpload() {
+		return imgUpload;
+	}
+	public void setImgUpload(MultipartFile imgUpload) {
+		this.imgUpload = imgUpload;
+		if(imgUpload!=null) {
+			this.img=this.imgUpload.getOriginalFilename();
+		}
+	}
 	public Timestamp getJoindate() {
 		return joindate;
 	}
@@ -176,10 +205,10 @@ public class AllMember {
 	@Override
 	public String toString() {
 		return "AllMember [id=" + id + ", password=" + password + ", nickname=" + nickname + ", name=" + name
-				+ ", email1=" + email1 + ", email2=" + email2 + ", hp1=" + hp1 + ", hp2=" + hp2 + ", hp3=" + hp3
-				+ ", postnumber=" + postnumber + ", address1=" + address1 + ", address2=" + address2 + ", year=" + year
-				+ ", month=" + month + ", day=" + day + ", gender=" + gender + ", img=" + img + ", joindate=" + joindate
-				+ "]";
+				+ ", email1=" + email1 + ", email2=" + email2 + ", email3=" + email3 + ", hp1=" + hp1 + ", hp2=" + hp2
+				+ ", hp3=" + hp3 + ", postnumber=" + postnumber + ", address1=" + address1 + ", address2=" + address2
+				+ ", year=" + year + ", month=" + month + ", day=" + day + ", gender=" + gender + ", img=" + img
+				+ ", img2=" + img2 + ", imgUpload=" + imgUpload + ", joindate=" + joindate + "]";
 	}
 	
 	

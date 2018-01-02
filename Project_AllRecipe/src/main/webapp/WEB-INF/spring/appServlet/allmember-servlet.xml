@@ -10,6 +10,10 @@
 	<mvc:annotation-driven/>
 	
 	<context:component-scan base-package="allmember" />
+	<context:component-scan base-package="reply" />
+	<context:component-scan base-package="recipe" />
+	<context:component-scan base-package="opinion" />
+	<context:component-scan base-package="talk" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/allmember/" />

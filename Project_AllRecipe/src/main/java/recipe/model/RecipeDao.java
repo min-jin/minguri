@@ -87,5 +87,11 @@ public class RecipeDao {
 		return list;
 	}
 
+	public List<Recipe> selectById(String id) {
+		List<Recipe> list=new ArrayList<>();
+		list=sqlSessionTemplate.selectList(namespace+".selectById", id);
+		return list;
+	}
+
 
 }

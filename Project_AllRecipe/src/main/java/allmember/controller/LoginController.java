@@ -23,7 +23,6 @@ import allmember.model.AllMemberDao;
 public class LoginController {
 	private static final String command="/login.mem";
 	private static final String	getPage="login";
-	private static final String	gotoPage="redirect:/mainPage.rec";
 	
 	@Autowired
 	@Qualifier("MyAllMemberDao")
@@ -39,7 +38,7 @@ public class LoginController {
 		return getPage;
 	}
 	@RequestMapping(value=command,method=RequestMethod.POST )
-	public String gotoLogin(
+	public void gotoLogin(
 			@RequestParam("id") String id,
 			@RequestParam("password") String password,
 			HttpServletResponse response,
@@ -63,7 +62,6 @@ public class LoginController {
 			writer.println("</script>");
 			writer.flush();
 			writer.close();
-			return getPage;
 		}else {
 			if(member.getId().equals(id) && member.getPassword().equals(password)) {
 				session.setAttribute("loginInfo",member);
@@ -74,7 +72,7 @@ public class LoginController {
 				writer.flush();
 				writer.close();
 				
-				return gotoPage;
+				
 			}else {
 				writer.println("<script type='text/javascript'>");
 				writer.println("alert('비밀번호를 다시 확인해주세요.')");
@@ -83,7 +81,6 @@ public class LoginController {
 				writer.flush();
 				writer.close();
 				
-				return getPage;
 			}
 		}
 		

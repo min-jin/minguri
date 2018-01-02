@@ -27,15 +27,12 @@ drop table recipe cascade constraints;
 create table recipe(
 	recnum		number primary key,	
 	writer		varchar2(30) references allmember(id) on delete set null,
-	psubject	varchar2(60) default '�������',
+	theme		varchar2(30) not null,
+	psubject	varchar2(60) default '제목없음',
+	shortintro	varchar2(1000),
 	intro		varchar2(2000),		--�Ұ�
 	mainimage	varchar2(40),		--�빮�̹���
-	kind 		number,				--����	
-	situation	number,				--��Ȳ
-	method		number,				--���
 	ingredient	number,				--���
-	person		varchar2(20),		--�ο���
-	time		varchar2(20),		--�丮�ð�
 	movieurl	varchar2(60),		--������ ��ũ�ּ�
 	scrap		number default 0,	--��ũ����
 	image1		varchar2(40),		
@@ -160,3 +157,4 @@ create table opinion(
 );
 
 
+select rec.

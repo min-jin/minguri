@@ -146,7 +146,7 @@ function writecheck(){
 		$("input[name=email1]").focus();
 		return false;
 	}
-	var email1regex=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z]){3,15}$/;
+	var email1regex=/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*$/;
 	if($("input[name=email1]").val().search(email1regex)<0){
 		alert("email주소는 3~15자의 영문자와 숫자로 입력해주세요.");
 		$("input[name=email1]").focus();
@@ -163,7 +163,7 @@ function writecheck(){
 		$("input[name=email3]").focus();
 		return false;
 	}
-	var email2regex=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+	var email2regex=/^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
 
 	if($("#mail option:selected").val()=="insert" && $("input[name=email3]").val().search(email2regex)<0){
 		alert("email도메인형식이 맞지않습니다.");

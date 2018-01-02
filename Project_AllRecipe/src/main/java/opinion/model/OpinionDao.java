@@ -1,5 +1,7 @@
 package opinion.model;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,4 +12,10 @@ public class OpinionDao {
 	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
+
+	public List<Opinion> selectById(String id) {
+		List<Opinion> list=null;
+		list=sqlSessionTemplate.selectList(namespace+".selectById", id);
+		return list;
+	}
 }

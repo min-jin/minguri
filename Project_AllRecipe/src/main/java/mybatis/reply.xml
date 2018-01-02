@@ -26,7 +26,10 @@
 	<update id="reUpdate">
 		update reply set content=#{content} where renum=#{renum}
 	</update>
-	<!-- <delete id="deleteAllByTnum">
+	<select id="selectById" resultType="MyReply">
+		select * from reply where rewriter=#{id} order by inputdate desc
+	</select>
+	<delete id="deleteAllByTnum">
 		delete from reply where cate=#{cate} and canum=#{canum} 
-	</delete> -->
+	</delete>
 </mapper>

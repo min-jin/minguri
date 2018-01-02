@@ -27,4 +27,7 @@
 	<delete id="deleteTalk">
 		delete from talk where tnum=#{tnum}
 	</delete>
+	<select id="selectById" resultType="Mytalk">
+		select * from talk where tid=#{id} order by inputdate desc
+	</select>
 </mapper>

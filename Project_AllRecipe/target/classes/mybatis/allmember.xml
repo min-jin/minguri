@@ -20,4 +20,18 @@
 	<select id="Findpw" resultType="MyAllMember">
 		select * from allmember where name=#{name} and hp1=#{hp1} and hp2=#{hp2} and hp3=#{hp3} and id=#{id}
 	</select>
+	<update id="updateMemberInfo">
+		update allmember set nickname=#{nickname},name=#{name},hp1=#{hp1},hp2=#{hp2},hp3=#{hp3},
+		email1=#{email1},email2=#{email2},postnumber=#{postnumber,jdbcType=VARCHAR},address1=#{address1,jdbcType=VARCHAR},address2=#{address2,jdbcType=VARCHAR},
+		year=#{year,jdbcType=VARCHAR},month=#{month,jdbcType=VARCHAR},day=#{day,jdbcType=VARCHAR},gender=#{gender,jdbcType=VARCHAR},img=#{img} where id=#{id}
+	</update>
+	<update id="updateMemberPasswd">
+		update allmember set password=#{password} where id=#{id}
+	</update>
+	<update id="updateProfile">
+		update allmember set img=#{img} where id=#{id}
+	</update>
+	<delete id="deleteMember">
+		delete from allmember where id=#{id}
+	</delete>
 </mapper>

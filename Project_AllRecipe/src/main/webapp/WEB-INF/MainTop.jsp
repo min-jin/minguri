@@ -97,8 +97,9 @@ a {
                 	마이페이지
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                <a class="dropdown-item" href="portfolio-1-col.html">MyHome</a>
-                <a class="dropdown-item" href="portfolio-2-col.html">개인정보수정</a>
+                <a class="dropdown-item" href="<%= contextPath %>/myhome.mem">MyHome</a>
+                <a class="dropdown-item" href="<%= contextPath %>/pass.mem?passnum=1">개인정보수정</a>
+                <a class="dropdown-item" href="<%= contextPath %>/pass.mem?passnum=2">비밀번호수정</a>
                 <a class="dropdown-item" href="portfolio-3-col.html">주문내역</a>
                 <a class="dropdown-item" href="portfolio-4-col.html">문의내역</a>
               </div>

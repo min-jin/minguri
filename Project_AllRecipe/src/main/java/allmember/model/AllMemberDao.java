@@ -38,6 +38,26 @@ public class AllMemberDao {
 		bean=sqlSessionTemplate.selectOne(namespace+".Findpw", member);
 		return bean;
 	}
+	public int updateMemberInfo(AllMember allmember) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.update(namespace+".updateMemberInfo", allmember);
+		return cnt;
+	}
+	public int updateMemberPasswd(Map<String, String> map) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.update(namespace+".updateMemberPasswd", map);
+		return cnt;
+	}
+	public int updateProfile(Map<String, String> map) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.update(namespace+".updateProfile", map);
+		return cnt;
+	}
+	public int deleteMember(String id) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.delete(namespace+".deleteMember", id);
+		return cnt;
+	}
 	
 	
 	

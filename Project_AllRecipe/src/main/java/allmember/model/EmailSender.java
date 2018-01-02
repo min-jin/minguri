@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 public class EmailSender {
 	@Autowired
-    protected JavaMailSender  mailSender;
+    private JavaMailSender  mailSender;
     public void SendEmail(Email email) throws Exception {
          
         MimeMessage msg = mailSender.createMimeMessage();
@@ -26,7 +26,7 @@ public class EmailSender {
         try {
             mailSender.send(msg);
         }catch(MailException e) {
-            System.out.println("MailException¹ß»ý");
+            System.out.println("MailExceptionï¿½ß»ï¿½");
             e.printStackTrace();
         }
     }

@@ -1,5 +1,7 @@
 package reply.model;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -50,9 +52,15 @@ public class ReplyDao {
 		return cnt;
 	}
 
-	/*public int deleteAllByTnum(Reply bean) {
+	public List<Reply> selectById(String id) {
+		List<Reply>list=null;
+		list=sqlSessionTemplate.selectList(namespace+".selectById", id);
+		return list;
+	}
+
+	public int deleteAllByTnum(Reply bean) {
 		int cnt=0;
 		cnt=sqlSessionTemplate.delete(namespace+".deleteAllByTnum", bean);
 		return cnt;
-	}	*/
+	}	
 }

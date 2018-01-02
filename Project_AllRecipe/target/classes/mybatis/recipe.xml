@@ -42,5 +42,7 @@
 	<select id="recentRecipe" resultType="MyRecipe">
 		select * from recipe order by recnum desc
 	</select>
-	
+	<select id="selectById" resultType="MyRecipe">
+		select * from recipe where writer=#{id} order by inputdate desc
+	</select> 
 </mapper>

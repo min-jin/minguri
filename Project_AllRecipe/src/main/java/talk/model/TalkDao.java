@@ -51,5 +51,11 @@ public class TalkDao {
 		cnt=sqlSessionTemplate.delete(namespace+".deleteTalk", tnum);
 		return cnt;
 	}
+
+	public List<Talk> selectById(String id) {
+		List<Talk>list=null;
+		list=sqlSessionTemplate.selectList(namespace+".selectById", id);
+		return list;
+	}
 	
 }
