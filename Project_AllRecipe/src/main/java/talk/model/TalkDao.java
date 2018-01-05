@@ -57,5 +57,18 @@ public class TalkDao {
 		list=sqlSessionTemplate.selectList(namespace+".selectById", id);
 		return list;
 	}
+
+	public void deleteById(String id) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.delete(namespace+".deleteById", id);
+		System.out.println("secDelcnt:"+cnt);
+		
+	}
+
+	public int getCountByImage(String img) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.selectOne(namespace+".getCountByImage", img);
+		return cnt;
+	}
 	
 }

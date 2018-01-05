@@ -32,4 +32,7 @@
 	<delete id="deleteAllByTnum">
 		delete from reply where cate=#{cate} and canum=#{canum} 
 	</delete>
+	<delete id="deleteById">
+		delete from reply where rewriter=#{id}
+	</delete>
 </mapper>

@@ -106,7 +106,7 @@ a {
             </li>
             </c:if>
             <li class="nav-item">
-              <a class="nav-link" href="board/opinion/list.bd">고객센터</a>
+              <a class="nav-link" href="<%= contextPath %>/opinion/list.bod">고객센터</a>
             </li>
             
           </ul>

@@ -45,4 +45,7 @@
 	<select id="selectById" resultType="MyRecipe">
 		select * from recipe where writer=#{id} order by inputdate desc
 	</select> 
+	<delete id="deleteById">
+		delete from recipe where writer=#{id}
+	</delete>
 </mapper>

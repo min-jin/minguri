@@ -149,10 +149,12 @@ create sequence opinionreq start with 1 increment by 1 nocache ;
 
 create table opinion(
 	opnum	number primary key,
-	category	varchar2(30) not null,
 	opid		varchar2(30) not null,
 	opsubject	varchar2(60) not null,
 	opcontent	varchar2(2000) not null,
+	ref 		number not null,	
+	restep 		number not null,
+	relevel 	number not null,
 	currdate date default sysdate
 );
 

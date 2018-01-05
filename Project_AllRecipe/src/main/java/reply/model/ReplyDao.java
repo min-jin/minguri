@@ -62,5 +62,11 @@ public class ReplyDao {
 		int cnt=0;
 		cnt=sqlSessionTemplate.delete(namespace+".deleteAllByTnum", bean);
 		return cnt;
+	}
+
+	public void deleteById(String id) {
+		int cnt=0;
+		cnt=sqlSessionTemplate.delete(namespace+".deleteById", id);
+		System.out.println("secDelcnt:"+cnt);
 	}	
 }

@@ -30,4 +30,10 @@
 	<select id="selectById" resultType="Mytalk">
 		select * from talk where tid=#{id} order by inputdate desc
 	</select>
+	<delete id="deleteById">
+		delete from talk where tid=#{id}
+	</delete>
+	<select id="getCountByImage" resultType="int">
+		select count(*) from talk where timage=#{img}
+	</select>
 </mapper>
